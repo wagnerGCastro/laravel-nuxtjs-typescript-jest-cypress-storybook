@@ -21,7 +21,8 @@
   },
   "scripts": {
     "postinstall": "husky install",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "devDependencies": {
     "cz-conventional-changelog": "3.3.0",
