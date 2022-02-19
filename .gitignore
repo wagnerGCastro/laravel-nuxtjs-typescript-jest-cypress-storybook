@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules
+.vscode
 _node_modules
 __node_modules
 backend-test
