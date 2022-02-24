@@ -729,8 +729,6 @@ function nextFactory (context, middleware, index) {
 router.beforeEach((to, from, next) => {
   const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
   if (publicPages.includes(to.path)) {
-    console.log('Passei pelo beforeEach')
-
     localStorage.removeItem('user')
     localStorage.removeItem('access_token')
   }
