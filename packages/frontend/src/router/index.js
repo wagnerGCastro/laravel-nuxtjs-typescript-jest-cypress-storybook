@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 
 /* Middleares */
 import guest from '../middleware/guest'
@@ -743,7 +744,7 @@ router.beforeEach((to, from, next) => {
    * https://www.youtube.com/watch?v=ToIVxvdpx-A
    */
   if (to.meta.middleware) {
-    const context = { from, next, router, to }
+    const context = { from, next, router, to, store }
     const middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : [to.meta.middleware]
     const nextMiddleware = nextFactory(context, middleware, 1)
 
