@@ -1,12 +1,11 @@
 const webpack = require('webpack')
 
-console.log(process.env.NODE_ENV)
-
-console.log(process.env.VUE_APP_BASE_URL)
-
-console.log(process.env.VUE_APP_PORT)
+console.log('Use env: ', process.env.NODE_ENV)
+console.log('Base url: ', process.env.VUE_APP_BASE_URL)
+console.log('APP run port: ', process.env.VUE_APP_PORT)
 
 module.exports = {
+
   publicPath: process.env.NODE_ENV === 'production'
     ? process.env.VUE_APP_BASE_URL
     : '/',
@@ -14,7 +13,7 @@ module.exports = {
   devServer: {
     open: process.platform === 'darwin',
     host: '0.0.0.0',
-    port: 8041, // CHANGE YOUR PORT HERE!
+    port: process.env.VUE_APP_PORT || 8041, // CHANGE YOUR PORT HERE!
     https: false,
     hotOnly: false
   },
