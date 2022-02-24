@@ -1,7 +1,7 @@
 import '@babel/polyfill'
 import Vue from 'vue'
 import 'mutationobserver-shim'
-import './Utils/fliter'
+import './utils/fliter'
 import './config/firebase'
 import App from './App.vue'
 import router from './router'
@@ -17,6 +17,10 @@ global.Raphael = Raphael
 Vue.use(AlgoliaComponents)
 
 Vue.config.productionTip = false
+
+console.log(process.env.NODE_ENV)
+console.log(process.env.VUE_APP_BASE_URL)
+console.log(process.env.VUE_APP_PORT)
 
 const vm = new Vue({
   router,

@@ -1,48 +1,105 @@
 <template>
   <div>
     <Loader />
-    <Customizer @onLogo="changeLogo" @toggle="sidebarMini" @animationChange="routerAnimationChange" />
+    <Customizer
+      @onLogo="changeLogo"
+      @toggle="sidebarMini"
+      @animationChange="routerAnimationChange"
+    />
     <div class="wrapper">
       <!-- Sidebar  -->
-      <SmallSidebar v-if="$route.name === 'dashboard.home-5'" :logo="SmallSidebarLogo" @toggle="sidebarMini" />
-      <Sidebar :items="verticalMenu" :logo="logo" :onlyLogo="onlyLogo" :onlyLogoText="onlyLogoText" @toggle="sidebarMini" :toggleButton="toggleSideIcon" :sidebarGroupTitle="sidebarGroupTitle" />
+      <SmallSidebar
+        v-if="$route.name === 'dashboard.home-5'"
+        :logo="SmallSidebarLogo"
+        @toggle="sidebarMini"
+      />
+      <Sidebar
+        :items="verticalMenu"
+        :logo="logo"
+        :onlyLogo="onlyLogo"
+        :onlyLogoText="onlyLogoText"
+        @toggle="sidebarMini"
+        :toggleButton="toggleSideIcon"
+        :sidebarGroupTitle="sidebarGroupTitle"
+      />
       <!-- TOP Nav Bar -->
-      <DefaultNavBar title="Dashboard" :homeURL="{ name: 'dashboard.home-1' }" :sidebarGroupTitle="sidebarGroupTitle" @toggle="sidebarMini" :logo="logo">
+      <DefaultNavBar
+        title="Dashboard"
+        :homeURL="{ name: 'dashboard.home-1' }"
+        :sidebarGroupTitle="sidebarGroupTitle"
+        @toggle="sidebarMini"
+        :logo="logo"
+      >
         <template slot="responsiveRight">
           <ul class="navbar-nav ml-auto navbar-list">
             <li class="nav-item" v-nav-toggle>
-              <a class="search-toggle iq-waves-effect language-title" href="#"><img :src="selectedLang.image" alt="img-flaf" class="img-fluid mr-1" style="height: 16px; width: 16px;" /> {{ selectedLang.title }} <i class="ri-arrow-down-s-line"></i></a>
+              <a class="search-toggle iq-waves-effect language-title" href="#"
+                ><img
+                  :src="selectedLang.image"
+                  alt="img-flaf"
+                  class="img-fluid mr-1"
+                  style="height: 16px; width: 16px" />
+                {{ selectedLang.title }} <i class="ri-arrow-down-s-line"></i
+              ></a>
               <div class="iq-sub-dropdown">
-                <a class="iq-sub-card" href="javascript:void(0)" v-for="(lang, i) in langsOptions" :key="`Lang${i}`" @click="langChange(lang)">
+                <a
+                  class="iq-sub-card"
+                  href="javascript:void(0)"
+                  v-for="(lang, i) in langsOptions"
+                  :key="`Lang${i}`"
+                  @click="langChange(lang)"
+                >
                   <img :src="lang.image" alt="img-flaf" class="img-fluid mr-2" />{{ lang.title }}
                 </a>
               </div>
             </li>
             <li class="nav-item" v-nav-toggle>
-              <a href="javascript:void(0)" class="iq-waves-effect" :class="cartCount > 0 ? 'search-toggle' : ''">
+              <a
+                href="javascript:void(0)"
+                class="iq-waves-effect"
+                :class="cartCount > 0 ? 'search-toggle' : ''"
+              >
                 <i class="ri-shopping-cart-2-line" />
                 <span class="menu-tag ml-2">{{ cartCount }}</span>
               </a>
               <div class="iq-sub-dropdown">
                 <div class="iq-card shadow-none m-0">
-                  <div class="iq-card-body p-0 ">
+                  <div class="iq-card-body p-0">
                     <div class="bg-primary p-3">
                       <h5 class="mb-0 text-white">{{ $t('nav.allCarts') }}</h5>
                     </div>
                     <div class="iq-sub-card" v-for="(item, index) in cartItems" :key="index">
                       <div class="media align-items-center">
                         <div class="w-20 text-center d-none justify-content-center d-md-block">
-                          <img :src="item.image" :alt="item.name" class="w-100 align-self-center mr-3" />
+                          <img
+                            :src="item.image"
+                            :alt="item.name"
+                            class="w-100 align-self-center mr-3"
+                          />
                         </div>
                         <div class="media-body ml-3">
-                          <b-button variant=" iq-bg-danger mt-3" size="sm" class="float-right" @click="removeToCart(item)">X</b-button>
-                          <h6 class="mb-0 ">{{ item.name.substring(0,20) + '...' }}</h6>
-                          <p class="mb-0 font-size-12">{{ item.description.substring(0,20) + '...' }}</p>
-                          <p class="mb-0"><b>$ {{ item.price }}</b></p>
+                          <b-button
+                            variant=" iq-bg-danger mt-3"
+                            size="sm"
+                            class="float-right"
+                            @click="removeToCart(item)"
+                            >X</b-button
+                          >
+                          <h6 class="mb-0">{{ item.name.substring(0, 20) + '...' }}</h6>
+                          <p class="mb-0 font-size-12">
+                            {{ item.description.substring(0, 20) + '...' }}
+                          </p>
+                          <p class="mb-0">
+                            <b>$ {{ item.price }}</b>
+                          </p>
                         </div>
                       </div>
                     </div>
-                    <router-link :to="{ name: 'app.e-commerce.cart'}"><b-button variant=" iq-bg-primary" block><i class="fas fa-cart-plus"/>{{ $t('nav.viewCarts') }}</b-button></router-link>
+                    <router-link :to="{ name: 'app.e-commerce.cart' }"
+                      ><b-button variant=" iq-bg-primary" block
+                        ><i class="fas fa-cart-plus" />{{ $t('nav.viewCarts') }}</b-button
+                      ></router-link
+                    >
                   </div>
                 </div>
               </div>
@@ -54,19 +111,27 @@
               </a>
               <div class="iq-sub-dropdown">
                 <div class="iq-card shadow-none m-0">
-                  <div class="iq-card-body p-0 ">
+                  <div class="iq-card-body p-0">
                     <div class="bg-primary p-3">
-                      <h5 class="mb-0 text-white">{{ $t('nav.allNotifications') }}<small class="badge  badge-light float-right pt-1">4</small></h5>
+                      <h5 class="mb-0 text-white">
+                        {{ $t('nav.allNotifications')
+                        }}<small class="badge badge-light float-right pt-1">4</small>
+                      </h5>
                     </div>
-                    <a href="#" class="iq-sub-card" v-for="(item, index) in notification" :key="index">
+                    <a
+                      href="#"
+                      class="iq-sub-card"
+                      v-for="(item, index) in notification"
+                      :key="index"
+                    >
                       <div class="media align-items-center">
                         <div class="">
-                          <img class="avatar-40 rounded" :src="item.image" alt="img">
+                          <img class="avatar-40 rounded" :src="item.image" alt="img" />
                         </div>
                         <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ item.name }}</h6>
+                          <h6 class="mb-0">{{ item.name }}</h6>
                           <small class="float-right font-size-12">{{ item.date }}</small>
-                          <p class="mb-0">{{ item.description.substring(0,40) + '...' }}</p>
+                          <p class="mb-0">{{ item.description.substring(0, 40) + '...' }}</p>
                         </div>
                       </div>
                     </a>
@@ -105,8 +170,11 @@
         <template slot="right">
           <ul class="navbar-list">
             <li class="" v-nav-toggle>
-              <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center bg-primary rounded">
-                <img :src="userProfile" class="img-fluid rounded mr-3" alt="user">
+              <a
+                href="#"
+                class="search-toggle iq-waves-effect d-flex align-items-center bg-primary rounded"
+              >
+                <img :src="userProfile" class="img-fluid rounded mr-3" alt="user" />
                 <div class="caption">
                   <h6 class="mb-0 line-height text-white">Nik jon</h6>
                   <span class="font-size-12 text-white">{{ $t('nav.user.available') }}</span>
@@ -114,7 +182,7 @@
               </a>
               <div class="iq-sub-dropdown iq-user-dropdown">
                 <div class="iq-card shadow-none m-0">
-                  <div class="iq-card-body p-0 ">
+                  <div class="iq-card-body p-0">
                     <div class="bg-primary p-3">
                       <h5 class="mb-0 text-white line-height">Hello Nik jone</h5>
                       <span class="text-white font-size-12">{{ $t('nav.user.available') }}</span>
@@ -125,7 +193,7 @@
                           <i class="ri-file-user-line"></i>
                         </div>
                         <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ $t('nav.user.profileTitle') }}</h6>
+                          <h6 class="mb-0">{{ $t('nav.user.profileTitle') }}</h6>
                           <p class="mb-0 font-size-12">{{ $t('nav.user.profileSub') }}</p>
                         </div>
                       </div>
@@ -136,7 +204,7 @@
                           <i class="ri-profile-line"></i>
                         </div>
                         <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ $t('nav.user.profileEditTitle') }}</h6>
+                          <h6 class="mb-0">{{ $t('nav.user.profileEditTitle') }}</h6>
                           <p class="mb-0 font-size-12">{{ $t('nav.user.profileEditSub') }}</p>
                         </div>
                       </div>
@@ -147,7 +215,7 @@
                           <i class="ri-account-box-line"></i>
                         </div>
                         <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ $t('nav.user.accountSettingTitle') }}</h6>
+                          <h6 class="mb-0">{{ $t('nav.user.accountSettingTitle') }}</h6>
                           <p class="mb-0 font-size-12">{{ $t('nav.user.accountSettingSub') }}</p>
                         </div>
                       </div>
@@ -158,13 +226,19 @@
                           <i class="ri-lock-line"></i>
                         </div>
                         <div class="media-body ml-3">
-                          <h6 class="mb-0 ">{{ $t('nav.user.privacySettingTitle') }}</h6>
-                          <p class="mb-0 font-size-12">{{ $t('nav.user.privacySettingSub')}}</p>
+                          <h6 class="mb-0">{{ $t('nav.user.privacySettingTitle') }}</h6>
+                          <p class="mb-0 font-size-12">{{ $t('nav.user.privacySettingSub') }}</p>
                         </div>
                       </div>
                     </a>
                     <div class="d-inline-block w-100 text-center p-3">
-                      <a class="bg-primary iq-sign-btn" href="javascript:void(0)" @click="logout" role="button">{{ $t('nav.user.signout') }}<i class="ri-login-box-line ml-2"></i></a>
+                      <a
+                        class="bg-primary iq-sign-btn"
+                        href="javascript:void(0)"
+                        @click="logout"
+                        role="button"
+                        >{{ $t('nav.user.signout') }}<i class="ri-login-box-line ml-2"></i
+                      ></a>
                     </div>
                   </div>
                 </div>
@@ -180,24 +254,28 @@
             <BreadCrumb />
           </b-row>
         </b-container>
-        <transition name="router-anim" :enter-active-class="`animated ${animated.enter}`" mode="out-in"
-                    :leave-active-class="`animated ${animated.exit}`">
-          <router-view/>
+        <transition
+          name="router-anim"
+          :enter-active-class="`animated ${animated.enter}`"
+          mode="out-in"
+          :leave-active-class="`animated ${animated.exit}`"
+        >
+          <router-view />
         </transition>
       </div>
-      <LayoutFixRightSide v-if="$route.name === 'dashboard.home-1' " />
+      <LayoutFixRightSide v-if="$route.name === 'dashboard.home-1'" />
     </div>
     <LayoutFooter />
   </div>
 </template>
 <script>
 import { core } from '../config/pluginInit'
-import { Users } from '../FackApi/api/chat'
+import { Users } from '../fackApi/api/chat'
 import { mapActions, mapGetters } from 'vuex'
 import Loader from '../components/core/loader/Loader'
 import Sidebar from '../components/core/sidebars/Sidebar'
 import DefaultNavBar from '../components/core/navbars/DefaultNavBar'
-import SideBarItems from '../FackApi/json/SideBar'
+import SideBarItems from '../fackApi/json/SideBar'
 import profile from '../assets/images/user/user-1.jpeg'
 import loader from '../assets/images/loader.gif'
 import darkLoader from '../assets/images/darkMode/dark-logo.gif'
@@ -266,18 +344,55 @@ export default {
       rtl: false,
       SmallSidebarLogo: WhiteLogo,
       message: [
-        { image: require('../assets/images/user/user-01.jpg'), name: 'Nik Emma Watson', date: '13 jan' },
+        {
+          image: require('../assets/images/user/user-01.jpg'),
+          name: 'Nik Emma Watson',
+          date: '13 jan'
+        },
         { image: require('../assets/images/user/user-02.jpg'), name: 'Greta Life', date: '14 Jun' },
         { image: require('../assets/images/user/user-03.jpg'), name: 'Barb Ackue', date: '16 Aug' },
-        { image: require('../assets/images/user/user-04.jpg'), name: 'Anna Sthesia', date: '21 Sept' },
-        { image: require('../assets/images/user/user-05.jpg'), name: 'Bob Frapples', date: '29 Sept' }
+        {
+          image: require('../assets/images/user/user-04.jpg'),
+          name: 'Anna Sthesia',
+          date: '21 Sept'
+        },
+        {
+          image: require('../assets/images/user/user-05.jpg'),
+          name: 'Bob Frapples',
+          date: '29 Sept'
+        }
       ],
       notification: [
-        { image: require('../assets/images/user/user-01.jpg'), name: 'Nik Emma Watson', date: '23 hour ago', description: 'Enjoy smart access to videos, games' },
-        { image: require('../assets/images/user/user-02.jpg'), name: 'Greta Life', date: '14 hour ago', description: 'Google Chromecast: Enjoy a world of entertainment' },
-        { image: require('../assets/images/user/user-03.jpg'), name: 'Barb Ackue', date: '16 hour ago', description: 'Dell Inspiron Laptop: Get speed and performance from' },
-        { image: require('../assets/images/user/user-04.jpg'), name: 'Anna Sthesia', date: '21 hour ago', description: 'Deliver your favorite playlist anywhere in your home ' },
-        { image: require('../assets/images/user/user-05.jpg'), name: 'Bob Frapples', date: '11 hour ago', description: 'MacBook Air features up to 8GB of memory, a fifth-generation' }
+        {
+          image: require('../assets/images/user/user-01.jpg'),
+          name: 'Nik Emma Watson',
+          date: '23 hour ago',
+          description: 'Enjoy smart access to videos, games'
+        },
+        {
+          image: require('../assets/images/user/user-02.jpg'),
+          name: 'Greta Life',
+          date: '14 hour ago',
+          description: 'Google Chromecast: Enjoy a world of entertainment'
+        },
+        {
+          image: require('../assets/images/user/user-03.jpg'),
+          name: 'Barb Ackue',
+          date: '16 hour ago',
+          description: 'Dell Inspiron Laptop: Get speed and performance from'
+        },
+        {
+          image: require('../assets/images/user/user-04.jpg'),
+          name: 'Anna Sthesia',
+          date: '21 hour ago',
+          description: 'Deliver your favorite playlist anywhere in your home '
+        },
+        {
+          image: require('../assets/images/user/user-05.jpg'),
+          name: 'Bob Frapples',
+          date: '11 hour ago',
+          description: 'MacBook Air features up to 8GB of memory, a fifth-generation'
+        }
       ],
       notBookmarkRouts: [
         'dashboard.home-1',
@@ -351,6 +466,6 @@ export default {
 }
 </script>
 <style>
-  @import url("../assets/css/custom.css");
-  @import url("../assets/css/PriceSlider.css");
+@import url('../assets/css/custom.css');
+@import url('../assets/css/PriceSlider.css');
 </style>

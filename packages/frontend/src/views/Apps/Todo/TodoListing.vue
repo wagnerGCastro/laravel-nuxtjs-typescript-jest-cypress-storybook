@@ -6,10 +6,11 @@
           :project-list="projectList"
           :category-list="categoryList"
           :selected-category="selectedCategory"
-          :selected-project="selectedProject"/>
+          :selected-project="selectedProject"
+        />
       </b-col>
       <b-col lg="9">
-        <TaskList :task-list="taskList" :project="selectedProject" :category="selectedCategory"/>
+        <TaskList :task-list="taskList" :project="selectedProject" :category="selectedCategory" />
       </b-col>
     </b-row>
   </b-container>
@@ -29,7 +30,7 @@ export default {
   beforeDestroy () {
     this.$store.unregisterModule('Todo')
   },
-  mounted () {
+  mounte () {
     core.index()
   },
   computed: {
@@ -43,5 +44,4 @@ export default {
   }
 }
 </script>
-<style>
-</style>
+<style></style>

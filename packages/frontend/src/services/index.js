@@ -1,12 +1,9 @@
-import axios from 'axios'
-import constant from '../config/constant'
+import { login, logout, register } from './api/auth'
 
-const token = document.head.querySelector('meta[name="csrf-token"]') || ''
-
-export default axios.create({
-  baseURL: constant.webBaseURL,
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest',
-    'X-CSRF-TOKEN': token
+export default {
+  auth: {
+    login,
+    logout,
+    register
   }
-})
+}

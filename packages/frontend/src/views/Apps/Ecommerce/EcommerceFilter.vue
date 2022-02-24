@@ -9,18 +9,8 @@
     </div>
     <div class="iq-filter-border iq-card" :class="!shadow ? 'shadow-none' : ''">
       <h5 class="card-title">Brands</h5>
-      <ais-refinement-list
-        attribute="brand"
-        searchable
-        show-more
-      >
-        <div
-          slot-scope="{
-            items,
-            isFromSearch,
-            refine
-          }"
-        >
+      <ais-refinement-list attribute="brand" searchable show-more>
+        <div slot-scope="{ items, isFromSearch, refine }">
           <ul class="list-group iq-list-style-1">
             <li v-if="isFromSearch && !items.length">No results.</li>
             <li v-for="item in items" :key="item.value" class="mb-2 mr-0">
@@ -32,7 +22,7 @@
                   :unchecked-value="false"
                   @change="refine(item.value)"
                 >
-                  <ais-highlight attribute="item" :hit="item"/>
+                  <ais-highlight attribute="item" :hit="item" />
                 </b-form-checkbox>
                 <b-badge variant=" iq-bg-primary">{{ item.count.toLocaleString() }}</b-badge>
               </div>
@@ -58,7 +48,15 @@
             @change="refine({ min: $event[0], max: $event[1] })"
           >
             <template slot="dot" slot-scope="{ index, value }">
-              <div :aria-valuemin="range.min" :aria-valuemax="range.max" :aria-valuenow="value" :data-handle-key="index" class="vue-slider-dot-handle" role="slider" tabindex="0" />
+              <div
+                :aria-valuemin="range.min"
+                :aria-valuemax="range.max"
+                :aria-valuenow="value"
+                :data-handle-key="index"
+                class="vue-slider-dot-handle"
+                role="slider"
+                tabindex="0"
+              />
             </template>
             <template slot="tooltip" slot-scope="{ value }">
               {{ formatNumber(value) }}
@@ -97,11 +95,7 @@
       <ais-toggle-refinement attribute="free_shipping" label="Free Shipping">
         <ul slot-scope="{ value, refine }" class="list-group iq-list-style-1">
           <li class="d-flex justify-content-between">
-            <b-form-checkbox
-              v-model="value.isRefined"
-              name="free_shipping"
-              @change="refine(value)"
-            >
+            <b-form-checkbox v-model="value.isRefined" name="free_shipping" @change="refine(value)">
               Free Shipping
             </b-form-checkbox>
             <span class="badge iq-bg-primary">{{ value.count }}</span>
@@ -113,12 +107,13 @@
 </template>
 <script>
 import VueSlider from 'vue-slider-component'
-import { formatNumber } from '../../../Utils/fliter'
+import { formatNumber } from '../../../utils/fliter'
 import ResetFilter from './ResetFilter'
 export default {
   name: 'EcommerceFilter',
   components: {
-    VueSlider, ResetFilter
+    VueSlider,
+    ResetFilter
   },
   props: {
     shadow: { type: Boolean, default: true },
