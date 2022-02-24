@@ -47,7 +47,8 @@
 </template>
 
 <script>
-import auth from '../../../../services/auth'
+
+import api from '../../../../services'
 import firebase from 'firebase'
 import SocialLoginForm from './SocialLoginForm'
 import { core } from '../../../../config/pluginInit'
@@ -83,34 +84,85 @@ export default {
       }
     },
     passportLogin () {
-      auth.login(this.user).then(response => {
-        if (response.status) {
-          localStorage.setItem('user', JSON.stringify(response.data))
-          this.$router.push({ name: 'dashboard.home-1' })
-        } else if (response.data.errors.length > 0) {
-          this.$refs.form.setErrors(response.data.errors)
-        }
-      }).finally(() => { this.loading = false })
+      // auth.login(this.user).then(response => {
+      //   if (response.status) {
+      //     localStorage.setItem('user', JSON.stringify(response.data))
+      //     this.$router.push({ name: 'dashboard.home-1' })
+      //   } else if (response.data.errors.length > 0) {
+      //     this.$refs.form.setErrors(response.data.errors)
+      //   }
+      // }).finally(() => { this.loading = false })
     },
-    jwtLogin () {
-      const selectedUser = this.stateUsers.find(user => {
-        return (user.email === this.user.email && user.password === this.user.password)
-      }) || null
+    async jwtLogin () {
+      console.log('OPa entrei aqui')
+
+      // const selectedUser = this.stateUsers.find(user => {
+      //   return (user.email === this.user.email && user.password === this.user.password)
+      // }) || null
+
+      const selectedUser = {
+        email: this.user.email,
+        password: this.user.password
+      }
+
       if (selectedUser) {
-        this.$store.dispatch('Setting/authUserAction', {
-          auth: true,
-          authType: 'jwt',
-          user: {
-            id: selectedUser.uid,
-            name: selectedUser.name,
-            mobileNo: null,
-            email: selectedUser.email,
-            profileImage: null
+        console.log('selectedUser', selectedUser)
+
+        //  const resp = await services.login({
+        //   email: this.resetPass.email,
+        // })
+
+        // console.log('service', api)
+
+        try {
+          const resp = await api.auth.login(selectedUser)
+          console.log('reps', JSON.stringify(resp, null, 2))
+        } catch (err) {
+          // console.log(JSON.stringify(err, null, 2))
+          // alert(err.response.status)
+          // console.log('erro', err.response.data);
+          // console.log('status', err.response.status);
+          // console.log(err.response.headers);
+
+          if (err.response) {
+            if (err.response.status === 400) {
+              return console.log(err.response.data.data)
+            }
+
+            if (err.response.status === 500) {
+              return console.log('Houve um erro inesperado, tente novamente mais tarde.')
+            }
           }
-        })
-        localStorage.setItem('user', JSON.stringify(selectedUser))
-        localStorage.setItem('access_token', selectedUser.token)
-        this.$router.push({ name: 'dashboard.home-1' })
+
+          /** Network Error */
+          if (err.name === 'Error') {
+            if (err.message === 'Network Error') {
+              return console.log('Sem conexão com o servidor.')
+            }
+
+            if (err.message === 'Request failed with status code 500') {
+              return console.log('Houve um erro com o servidor.')
+            }
+          }
+        } finally {
+          // off load
+
+        }
+
+        // this.$store.dispatch('Setting/authUserAction', {
+        //   auth: true,
+        //   authType: 'jwt',
+        //   user: {
+        //     id: selectedUser.uid,
+        //     name: selectedUser.name,
+        //     mobileNo: null,
+        //     email: selectedUser.email,
+        //     profileImage: null
+        //   }
+        // })
+        // localStorage.setItem('user', JSON.stringify(selectedUser))
+        // localStorage.setItem('access_token', selectedUser.token)
+        // this.$router.push({ name: 'dashboard.home-1' })
       }
     },
     firebaseLogin () {
