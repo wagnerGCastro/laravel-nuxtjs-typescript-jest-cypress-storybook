@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+/* Middleares */
+import guest from '../middleware/guest'
+
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
 const Default = () => import('../layouts/BlankLayout')
@@ -434,7 +438,10 @@ const authChildRoutes = (prop) => [
   {
     path: 'sign-in1',
     name: prop + '.sign-in1',
-    meta: { auth: true },
+    meta: {
+      auth: true,
+      middleware: [guest]
+    },
     component: SignIn1
   },
   {
@@ -705,14 +712,44 @@ const router = new VueRouter({
   base: process.env.VUE_APP_BASE_URL,
   routes
 })
+
+function nextFactory (context, middleware, index) {
+  const subsequentMiddleware = middleware[index]
+  if (!subsequentMiddleware) {
+    return context.next
+  }
+  return (...parameters) => {
+    context.next(...parameters)
+    const nextMiddleare = nextFactory(context, middleware, index + 1)
+    subsequentMiddleware({ ...context, next: nextMiddleare })
+  }
+}
+
 router.beforeEach((to, from, next) => {
   const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
   if (publicPages.includes(to.path)) {
+    console.log('Passei pelo beforeEach')
+
     localStorage.removeItem('user')
     localStorage.removeItem('access_token')
   }
+
   const authRequired = !publicPages.includes(to.path)
   const loggedIn = localStorage.getItem('user')
+
+  /**
+   * Implement middleare vue-cli
+   * Learn how to work with middleware in vue-cli / vue - middleware are very powerful
+   * https://www.youtube.com/watch?v=ToIVxvdpx-A
+   */
+  if (to.meta.middleware) {
+    const context = { from, next, router, to }
+    const middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : [to.meta.middleware]
+    const nextMiddleware = nextFactory(context, middleware, 1)
+
+    return middleware[0]({ ...context, next: nextMiddleware })
+  }
+
   if (to.meta.auth) {
     if (authRequired && loggedIn === null) {
       return next('/auth/sign-in1')

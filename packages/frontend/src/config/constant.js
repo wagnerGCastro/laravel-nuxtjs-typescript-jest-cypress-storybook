@@ -1,5 +1,5 @@
 export default {
-  webBaseURL: process.env.MIX_APP_URL,
+  webBaseURL: 'http://localhost:8040', // process.env.API_APP_URL,
   firebaseConfig: {
     apiKey: '',
     authDomain: '',

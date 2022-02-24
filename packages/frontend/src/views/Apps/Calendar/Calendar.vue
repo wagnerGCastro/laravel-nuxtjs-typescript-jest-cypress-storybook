@@ -2,9 +2,19 @@
   <b-container fluid>
     <b-row>
       <b-col cols="12">
-        <div class="iq-card mb-0" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0" id="menu">
-          <div id="menu-navi" class="iq-card-body d-flex align-items-center justify-content-between" @click="onClickNavi($event)">
-            <button type="button" class="btn mr-1 btn-outline-primary" data-action="move-today">Today</button>
+        <div
+          class="iq-card mb-0"
+          style="border-bottom-left-radius: 0; border-bottom-right-radius: 0"
+          id="menu"
+        >
+          <div
+            id="menu-navi"
+            class="iq-card-body d-flex align-items-center justify-content-between"
+            @click="onClickNavi($event)"
+          >
+            <button type="button" class="btn mr-1 btn-outline-primary" data-action="move-today">
+              Today
+            </button>
             <div class="d-flex">
               <button type="button" class="btn btn-link iq-bg-primary" data-action="move-prev">
                 <i class="fa fa-chevron-left mr-0" data-action="move-prev" />
@@ -28,24 +38,26 @@
         </div>
       </b-col>
       <b-col cols="12">
-        <calendar style="height: 800px" id="calender"
-                  ref="tuiCal"
-                  :useDetailPopup="useDetailPopup"
-                  :view="selectedView"
-                  :calendars="calendarList"
-                  :schedules="scheduleList"
-                  :template="template"
-                  :taskView="true"
-                  :scheduleView="true"
-                  :month="month"
-                  :week="week"
-                  :disableDblClick="disableDblClick"
-                  :isReadOnly="isReadOnly"
-                  @clickSchedule="onClickSchedule"
-                  @clickDayname="onClickDayname"
-                  @beforeCreateSchedule="onBeforeCreateSchedule"
-                  @beforeUpdateSchedule="onBeforeUpdateSchedule"
-                  @beforeDeleteSchedule="onBeforeDeleteSchedule"
+        <calendar
+          style="height: 800px"
+          id="calender"
+          ref="tuiCal"
+          :useDetailPopup="useDetailPopup"
+          :view="selectedView"
+          :calendars="calendarList"
+          :schedules="scheduleList"
+          :template="template"
+          :taskView="true"
+          :scheduleView="true"
+          :month="month"
+          :week="week"
+          :disableDblClick="disableDblClick"
+          :isReadOnly="isReadOnly"
+          @clickSchedule="onClickSchedule"
+          @clickDayname="onClickDayname"
+          @beforeCreateSchedule="onBeforeCreateSchedule"
+          @beforeUpdateSchedule="onBeforeUpdateSchedule"
+          @beforeDeleteSchedule="onBeforeDeleteSchedule"
         />
       </b-col>
     </b-row>
@@ -55,8 +67,8 @@
 import 'tui-time-picker/dist/tui-time-picker.css'
 import 'tui-date-picker/dist/tui-date-picker.css'
 import 'tui-calendar/dist/tui-calendar.css'
-import Event from '../../../Model/Event'
-import { CalenderList, Events } from '../../../FackApi/api/calendar'
+import Event from '../../../model/Event'
+import { CalenderList, Events } from '../../../fackApi/api/calendar'
 import { Calendar } from '@toast-ui/vue-calendar'
 import { core } from '../../../config/pluginInit'
 export default {
@@ -128,7 +140,20 @@ export default {
       const calDate = invoke('getDate')
       const rangeStart = invoke('getDateRangeStart')
       const rangeEnd = invoke('getDateRangeEnd')
-      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ]
       let year = calDate.getFullYear()
       let month = calDate.getMonth() + 1
       let date = calDate.getDate()

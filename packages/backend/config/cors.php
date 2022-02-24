@@ -1,5 +1,7 @@
 <?php
 
+$origins = explode(',', env('ACC_CONT_ALL_ORIG', ''));
+
 return [
 
     /*
@@ -19,7 +21,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => $origins,
 
     'allowed_origins_patterns' => [],
 

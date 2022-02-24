@@ -1,7 +1,7 @@
 import getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
-import SideBarItems from '../../FackApi/json/GlobalSearch'
+import SideBarItems from '../../fackApi/json/GlobalSearch'
 
 const state = {
   horizontalMenu: false,
@@ -71,7 +71,6 @@ const state = {
       is_icon_class: true,
       icon: 'ri-inbox-line'
     }
-
   ],
   activePage: {
     name: 'Dashboard',

@@ -7,24 +7,49 @@
       <div class="container mt-4">
         <div class="row">
           <div class="col-md-2">
-            <img class="rounded-circle" src="../../../../assets/images/user/user-01.jpg">
+            <img class="rounded-circle" src="../../../../assets/images/user/user-01.jpg" />
           </div>
           <div class="col-md-10">
             <div class="form-group">
-              <textarea type="text" placeholder="Write something about post..." class="rounded form-control" v-model="post.description"></textarea>
+              <textarea
+                type="text"
+                placeholder="Write something about post..."
+                class="rounded form-control"
+                v-model="post.description"
+              ></textarea>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="row pl-1">
-              <div class="col-md-3 p-0 pl-2 height-100" v-for="postImage in post.images" :key="postImage">
-                <img class="preview w-100 h-100" :src="postImage">
+              <div
+                class="col-md-3 p-0 pl-2 height-100"
+                v-for="postImage in post.images"
+                :key="postImage"
+              >
+                <img class="preview w-100 h-100" :src="postImage" />
               </div>
               <div class="col-md-3 p-0 pl-2 height-100">
-                <div class="d-flex align-items-center justify-content-center py-2 position-relative" style="background-color: #eee; border: 2px dashed rgb(175, 169, 169); color: #ddd; height: 100%">
+                <div
+                  class="d-flex align-items-center justify-content-center py-2 position-relative"
+                  style="
+                    background-color: #eee;
+                    border: 2px dashed rgb(175, 169, 169);
+                    color: #ddd;
+                    height: 100%;
+                  "
+                >
                   <span class="font-size-32 text-gray" style="font-weight: 500">+</span>
-                  <input type="file" accept="image/*" @change="previewImage"  class="file position-absolute w-100 h-100" id="post_upload" style="opacity: 0;" multiple />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    @change="previewImage"
+                    class="file position-absolute w-100 h-100"
+                    id="post_upload"
+                    style="opacity: 0"
+                    multiple
+                  />
                 </div>
               </div>
             </div>
@@ -34,7 +59,9 @@
         <div class="row">
           <div class="col m-0 float-md-right pb-3">
             <button class="btn btn-primary float-right" @click="addNewPost(post)">Post</button>
-            <button class="btn btn-outline-secondary mr-2 float-right" @click="resetPost()">Cancel</button>
+            <button class="btn btn-outline-secondary mr-2 float-right" @click="resetPost()">
+              Cancel
+            </button>
           </div>
         </div>
       </div>
@@ -42,7 +69,7 @@
   </div>
 </template>
 <script>
-import Post from '../../../../Model/Post'
+import Post from '../../../../model/Post'
 
 export default {
   name: 'AddSocialPost',
@@ -64,7 +91,7 @@ export default {
       Object.keys(files).forEach(i => {
         const file = files[i]
         const reader = new FileReader()
-        reader.onload = (e) => {
+        reader.onload = e => {
           this.post.images.push(e.target.result)
         }
         reader.readAsDataURL(file)
