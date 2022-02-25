@@ -18,9 +18,9 @@ Vue.use(AlgoliaComponents)
 
 Vue.config.productionTip = false
 
-console.log(process.env.NODE_ENV)
-console.log(process.env.VUE_APP_BASE_URL)
-console.log(process.env.VUE_APP_PORT)
+// console.log(process.env.NODE_ENV)
+// console.log(process.env.VUE_APP_BASE_URL)
+// console.log(process.env.VUE_APP_PORT)
 
 const vm = new Vue({
   router,
