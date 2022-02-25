@@ -8,9 +8,11 @@ import guest from '../middleware/guest'
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
 const Default = () => import('../layouts/BlankLayout')
+const BlankEmptyLayout= () => import('../layouts/BlankEmptyLayout')
 const AuthLayout = () => import('../layouts/AuthLayouts/AuthLayout')
 const HorizantalLayout = () => import('../layouts/HorizantalLayout')
 /* Dashboards View */
+const Home = () => import('../views/Home.vue')
 const Dashboard1 = () => import('../views/Dashboards/Dashboard1.vue')
 const Dashboard2 = () => import('../views/Dashboards/Dashboard2.vue')
 const Dashboard3 = () => import('../views/Dashboards/Dashboard3')
@@ -521,6 +523,12 @@ const defaultlayout = (prop) => [
 
 const pagesChildRoutes = (prop) => [
   {
+    path: 'home-0',
+    name: prop + '.home-0',
+    meta: { auth: true },
+    component: Home
+  },
+  {
     path: 'error/:code',
     name: prop + '.error',
     meta: { auth: true },
@@ -529,7 +537,7 @@ const pagesChildRoutes = (prop) => [
   {
     path: 'coming-soon',
     name: prop + '.coming-soon',
-    meta: { auth: true },
+    meta: { auth: true, layout: 'sdf' },
     component: ComingSoon
   },
   {
@@ -645,6 +653,13 @@ const routes = [
     children: authChildRoutes('auth1')
   },
   {
+    path: '/pages-blank',
+    name: 'pages-blank',
+    component: BlankEmptyLayout,
+    meta: { auth: true },
+    children: pagesChildRoutes('pages-blank')
+  },
+  {
     path: '/pages',
     name: 'pages',
     component: Default,
@@ -727,7 +742,13 @@ function nextFactory (context, middleware, index) {
 }
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/auth/sign-in1', '/auth/sign-up1', '/dark/auth/sign-in1', '/dark/auth/sign-up1']
+  const publicPages = [
+    '/auth/sign-in1',
+    '/auth/sign-up1',
+    '/dark/auth/sign-in1',
+    '/dark/auth/sign-up1',
+    '/pages-blank/home-0'
+  ]
   if (publicPages.includes(to.path)) {
     localStorage.removeItem('user')
     localStorage.removeItem('access_token')
@@ -756,6 +777,7 @@ router.beforeEach((to, from, next) => {
       return next('/home-1')
     }
   }
+
   next()
 })
 
