@@ -465,7 +465,12 @@ export default {
   }
 }
 </script>
+
 <style>
-@import url('../assets/css/custom.css');
-@import url('../assets/css/PriceSlider.css');
+  @import url('../assets/css/custom.css');
+  @import url('../assets/css/PriceSlider.css');
+</style>
+
+<style lang="scss">
+  @import "../assets/scss/style.scss";
 </style>
