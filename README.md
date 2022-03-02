@@ -21,3 +21,16 @@
       php artisan serve --host=backend.local  --port=8045
       php artisan serve --env=dev  --host=0.0.0.0  --port=8040
       php -S 0.0.0.0:8040 
+
+  # PHP Artisan
+    - php artisan migrate
+    - php artisan make:model Modules -m
+
+    - php artisan make:model Permissions -m
+    - php artisan make:migration alter_table_foreign_keys --create=permissions
+
+    - php artisan make:seeder UsersTableSeeder
+    -	php artisan db:seed --class=DatabaseSeeder  
+
+  # Mysql
+    - ALTER TABLE myTabel AUTO_INCREMENT=0;

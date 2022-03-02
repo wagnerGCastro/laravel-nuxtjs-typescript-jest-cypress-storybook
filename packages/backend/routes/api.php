@@ -2,8 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Models\User;
+
 use App\Http\Controllers\Api\AuthController;
+
+use App\Http\Controllers\TestRelationships\OneToMany\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +49,18 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         // Route::get('/users/{user_id}', 'Api\UserController@show')->name('user.show');
         // Route::put('/users/{user_id}', 'Api\UserController@update')->name('user.update');
         // Route::delete('/users/{user_id}', 'Api\UserController@destroy')->name('user.destroy');
+    });
+});
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+
+    /** API Test Eloquent Relationships */
+    Route::prefix('test')->group(function() {
+
+        /**  One To Many */
+        Route::prefix('one-to-many')->group(function() {
+            Route::get('permissions', [PermissionController::class, 'oneToMany'])->name('test.relation.oneToMany');
+        });
+
     });
 });
