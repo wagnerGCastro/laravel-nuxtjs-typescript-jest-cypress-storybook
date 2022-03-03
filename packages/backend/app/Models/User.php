@@ -19,7 +19,9 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'login',
         'email',
         'password',
     ];
@@ -62,4 +64,34 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Set the user's login.
+     * Ref: https://laravel.com/docs/8.x/eloquent-mutators
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setLoginAttribute($value)
+    {
+        $this->attributes['login'] = strtolower($value);
+    }
+
+    /**
+     * Get Roles
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Get Permissions
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+
+
 }
