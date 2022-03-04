@@ -24,12 +24,12 @@
 
   # PHP Artisan
     - php artisan migrate
-    - php artisan make:model Modules -m
 
     - php artisan make:model Permissions -m
+    - php artisan make:controller Api/name_of_controller --api --model=name_of_model
     - php artisan make:migration alter_table_foreign_keys --create=permissions
-
     - php artisan make:seeder UsersTableSeeder
+    - php artisan make:request PostStoreUpdateRequest
     -	php artisan db:seed --class=DatabaseSeeder  
 
   # Mysql

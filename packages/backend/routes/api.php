@@ -5,9 +5,15 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\User;
 
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\{
+    AuthController,
+    PostController,
+    PermissionController,
+};
 
-use App\Http\Controllers\TestRelationships\OneToMany\PermissionController;
+use App\Http\Controllers\TestRelationships\OneToMany\{
+    PermissionController as PermissionTestController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +34,6 @@ Route::get('/v1/test', function (Request $request) {
     $users = User::get();
 
         return response()->json([
-            'codeStatus' => '200',
             'totUsers' => $users
         ], 200);
 });
@@ -44,12 +49,43 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     /** API VERSION 1 */
     Route::prefix('v1')->group(function() {
+
+        /**
+         * [P]
+         * ---------
+         */
+        /** Permissions */
+        Route::apiResource('permissions', Api\PermissionController::class)->except([
+            'destroy'
+        ]);
+
+        /** Post */
+        // Route::get('posts', 'Api\PostController@index')->name('post.index');
+        Route::get('posts', [PostController::class, 'index'])->name('post.index');
+        Route::get('posts/{id}', [PostController::class, 'show'])->name('post.show');
+        Route::post('posts', [PostController::class, 'store'])->name('post.store');
+        Route::put('posts/{id}', [PostController::class, 'update'])->name('post.update');
+
+        /**
+         * [R]
+         * ---------
+         */
+        /** Resources */
+        Route::apiResource('resources', Api\ResourceController::class)->except([
+            'destroy'
+        ]);
+
+        /**
+         * [U]
+         * ---------
+         */
         /** User */
         // Route::get('/users', [UserController::class, 'index'])->name('user.index');
         // Route::get('/users/{user_id}', 'Api\UserController@show')->name('user.show');
         // Route::put('/users/{user_id}', 'Api\UserController@update')->name('user.update');
         // Route::delete('/users/{user_id}', 'Api\UserController@destroy')->name('user.destroy');
     });
+
 });
 
 Route::group(['middleware' => ['jwt.verify']], function() {
@@ -59,7 +95,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
         /**  One To Many */
         Route::prefix('one-to-many')->group(function() {
-            Route::get('permissions', [PermissionController::class, 'oneToMany'])->name('test.relation.oneToMany');
+            Route::get('permissions', [PermissionTestController::class, 'oneToMany'])->name('test.relation.oneToMany');
         });
 
     });
