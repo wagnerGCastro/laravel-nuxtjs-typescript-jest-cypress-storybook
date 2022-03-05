@@ -15,7 +15,7 @@ class PostStoreUpdate extends FormRequest
      */
     public function authorize()
     {
-        return true;
+       return true;
     }
 
     /**
@@ -26,7 +26,6 @@ class PostStoreUpdate extends FormRequest
     public function rules(Post $post)
     {
         return [
-            'user_id' => 'required|exists:users,id',
             'title' => 'required|min:3|max:255',
             'description' => 'required|min:3',
             'status' => [
