@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Gate;
 use App\Http\Requests\PostStoreUpdate;
 use App\Models\Post;
 
@@ -24,6 +25,12 @@ class PostController extends Controller
      */
     public function index()
     {
+        if( Gate::denies('menu_post_index') ):
+            return response()->json([
+                'message' => 'Unauthorized',
+            ], 403);
+        endif;
+
         try {
             $posts = $this->post->all();
             // $posts = $this->post->where('user_id', auth('api')->user()->id)->get();
@@ -49,6 +56,12 @@ class PostController extends Controller
      */
     public function store(PostStoreUpdate $request)
     {
+        if( Gate::denies('menu_post_store') ):
+            return response()->json([
+                'message' => 'Unauthorized',
+            ], 403);
+        endif;
+
         $request->validated();
 
         try {
@@ -73,6 +86,13 @@ class PostController extends Controller
      */
     public function show(Post $id)
     {
+
+        if( Gate::denies('menu_post_show') ):
+            return response()->json([
+                'message' => 'Unauthorized',
+            ], 403);
+        endif;
+
         return response()->json($id, Response::HTTP_OK);
     }
 
@@ -83,8 +103,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostStoreUpdate $request, $id)
+    public function update(PostStoreUpdate $request, Post $id)
     {
+        /** Policie Post [ereror]*/
+        // $this->authorize('update', $id);
+        // Gate::authorize('update', $id);
+
+        if(Gate::denies('menu_post_update')):
+            return response()->json([
+                'message' => 'Unauthorized!',
+            ], 404);
+        endif;
+
         $request->validated();
 
         try {
@@ -98,7 +128,6 @@ class PostController extends Controller
         }
 
         return response()->json('Post successfully updated!', Response::HTTP_OK);
-
     }
 
     /**
