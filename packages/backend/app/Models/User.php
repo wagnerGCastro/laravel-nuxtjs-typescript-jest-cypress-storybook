@@ -93,5 +93,48 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany(Permission::class);
     }
 
+    /**
+     * Checks permissions linked to roles with logged in user
+     */
+    public function hasPermission(Permission $permission)
+    {
+        // User permision_user => [menu_user_view, menu_post_show]
+        $hasUserPermission = $this->hasAnyUserPermissions($permission);
 
+        if($hasUserPermission) {
+            return true;
+        }
+
+        // Roles user: role_user => [menu_user_view, menu_post_show]
+        return $this->hasAnyRoles($permission->roles);
+    }
+
+    /**
+     * Check if the logged in user has the specific permission
+     * @return true or false
+     */
+    public function hasAnyRoles($roles)
+    {
+        // role_user => admin, manage  | (logged in user has the specified function)
+        if( is_array($roles) || is_object($roles) ):
+            return !! $roles->intersect($this->roles)->count();
+        endif;
+
+        return $this->roles->contains('name', $roles);
+    }
+
+    /**
+     * Check if the logged in user has the specific permission
+     * @return true or false
+     */
+    public function hasAnyUserPermissions($permission)
+    {
+        if(is_object($permission)):
+            if(!empty($permission->name)) {
+               return $this->permissions->contains('name', $permission->name);
+            }
+        endif;
+
+        return false;
+    }
 }
