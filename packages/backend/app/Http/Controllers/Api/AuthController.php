@@ -24,7 +24,7 @@ class AuthController extends Controller
 
         //Send failed response if request is not valid
         if ($validator->fails()) {
-            return response()->json(['code' => 400,'error' => $validator->messages()], 400);
+            return response()->json(['error' => $validator->messages()], 400);
         }
 
         //Request is valid, create new user
@@ -36,7 +36,6 @@ class AuthController extends Controller
 
         //User created, return success response
         return response()->json([
-            'code' => 201,
             'message' => 'User created successfully',
             'data' => $user
         ], Response::HTTP_OK);
@@ -55,7 +54,6 @@ class AuthController extends Controller
         //Send failed response if request is not valid
         if ($validator->fails()) {
             return response()->json([
-                'code' => 400,
                 'error' => 'Data validation error.',
                 'message' => $validator->messages(),
             ], 400);
@@ -66,7 +64,6 @@ class AuthController extends Controller
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json([
-                    'code' => 400,
                 	'error'=> 'Email or password incorrect',
                 	'message' => 'Login credentials are invalid.',
                 ], 400);
@@ -74,15 +71,17 @@ class AuthController extends Controller
         } catch (JWTException $e) {
     	    // return $credentials;
             return response()->json([
-                'code' => 500,
                 'error'=> 'Error internal server!',
                 'message' => 'Could not create token.',
             ], 500);
         }
 
+        // Recover logged in user
+        $user = auth()->user();
+
  		//Token created, return with success response and jwt token
         return response()->json([
-            'code' => 200,
+            'user' => $user,
             'token' => $token,
         ]);
     }
@@ -105,7 +104,7 @@ class AuthController extends Controller
 
         //Send failed response if request is not valid
         if ($validator->fails()) {
-            return response()->json(['code' => 400,'error' => $validator->messages()], 400);
+            return response()->json(['error' => $validator->messages()], 400);
         }
 
 		//Request is validated, do logout
@@ -118,7 +117,6 @@ class AuthController extends Controller
             ]);
         } catch (JWTException $exception) {
             return response()->json([
-                'code' => 500,
                 'message' => 'Sorry, user cannot be logged out'
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
