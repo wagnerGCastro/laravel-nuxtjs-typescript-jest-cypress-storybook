@@ -47,12 +47,11 @@
 </template>
 
 <script>
-
-import api from '../../../../services'
+import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
+import { statusErrors } from '../../../../utils/status-errors'
 import SocialLoginForm from './SocialLoginForm'
 import { core } from '../../../../config/pluginInit'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'SignIn1Form',
@@ -67,6 +66,8 @@ export default {
   mounted () {
     this.user.email = this.$props.email
     this.user.password = this.$props.password
+
+    // console.log('this.$store.', this.$store)
   },
   computed: {
     ...mapGetters({
@@ -74,6 +75,8 @@ export default {
     })
   },
   methods: {
+    ...mapActions('auth', ['loginAction']),
+
     onSubmit () {
       if (this.formType === 'passport') {
         this.passportLogin()
@@ -94,7 +97,7 @@ export default {
       // }).finally(() => { this.loading = false })
     },
     async jwtLogin () {
-      console.log('OPa entrei aqui')
+      const self = this
 
       // const selectedUser = this.stateUsers.find(user => {
       //   return (user.email === this.user.email && user.password === this.user.password)
@@ -106,44 +109,11 @@ export default {
       }
 
       if (selectedUser) {
-        console.log('selectedUser', selectedUser)
-
-        //  const resp = await services.login({
-        //   email: this.resetPass.email,
-        // })
-
-        // console.log('service', api)
-
         try {
-          const resp = await api.auth.login(selectedUser)
-          console.log('reps', JSON.stringify(resp, null, 2))
+          await self.loginAction(selectedUser)
+          this.$router.push({ name: 'dashboard.home-1' })
         } catch (err) {
-          // console.log(JSON.stringify(err, null, 2))
-          // alert(err.response.status)
-          // console.log('erro', err.response.data);
-          // console.log('status', err.response.status);
-          // console.log(err.response.headers);
-
-          if (err.response) {
-            if (err.response.status === 400) {
-              return console.log(err.response.data.data)
-            }
-
-            if (err.response.status === 500) {
-              return console.log('Houve um erro inesperado, tente novamente mais tarde.')
-            }
-          }
-
-          /** Network Error */
-          if (err.name === 'Error') {
-            if (err.message === 'Network Error') {
-              return console.log('Sem conexão com o servidor.')
-            }
-
-            if (err.message === 'Request failed with status code 500') {
-              return console.log('Houve um erro com o servidor.')
-            }
-          }
+          statusErrors(err)
         } finally {
           // off load
 

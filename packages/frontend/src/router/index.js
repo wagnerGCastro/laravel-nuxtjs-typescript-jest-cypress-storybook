@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store'
+import beforeEach from './beforeEach'
 
 /* Middleares */
 import guest from '../middleware/guest'
@@ -8,12 +8,12 @@ import guest from '../middleware/guest'
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
 const Default = () => import('../layouts/BlankLayout')
-const BlankEmptyLayout= () => import('../layouts/BlankEmptyLayout')
+const BlankEmptyLayout = () => import('../layouts/BlankEmptyLayout')
 const AuthLayout = () => import('../layouts/AuthLayouts/AuthLayout')
 const HorizantalLayout = () => import('../layouts/HorizantalLayout')
 /* Dashboards View */
-const Home = () => import('../views/Home.vue')
-const Dashboard1 = () => import('../views/Dashboards/Dashboard1.vue')
+const Home = () => import(/* webpackChunkName: 'Home' */ '../views/Home.vue')
+const Dashboard1 = () => import(/* webpackChunkName: 'Dashboard1' */ '../views/Dashboards/Dashboard1.vue')
 const Dashboard2 = () => import('../views/Dashboards/Dashboard2.vue')
 const Dashboard3 = () => import('../views/Dashboards/Dashboard3')
 const Dashboard4 = () => import('../views/Dashboards/Dashboard4')
@@ -450,7 +450,7 @@ const authChildRoutes = (prop) => [
   {
     path: 'sign-up1',
     name: prop + '.sign-up1',
-    meta: { auth: true },
+    // meta: { auth: true },
     component: SignUp1
   },
   {
@@ -604,8 +604,15 @@ const pluginsChildRoute = (prop) => [
 ]
 const routes = [
   {
+    path: '',
+    name: 'home',
+    meta: { auth: true },
+    redirect: '/home-1'
+  },
+  {
     path: '/',
     name: 'dashboard',
+    redirect: '/home-1',
     component: VerticleLayout,
     meta: { auth: true },
     children: childRoutes('dashboard')
@@ -613,6 +620,7 @@ const routes = [
   {
     path: '/menu-design',
     name: 'horizontal-dashboard',
+    redirect: '/menu-design/home-2',
     component: HorizantalLayout,
     meta: { auth: true },
     children: horizontalRoute('dashboard')
@@ -649,14 +657,14 @@ const routes = [
     path: '/auth',
     name: 'auth1',
     component: AuthLayout,
-    meta: { auth: true },
+    // meta: { auth: true },
     children: authChildRoutes('auth1')
   },
   {
     path: '/pages-blank',
     name: 'pages-blank',
     component: BlankEmptyLayout,
-    meta: { auth: true },
+    // meta: { auth: true },
     children: pagesChildRoutes('pages-blank')
   },
   {
@@ -729,56 +737,8 @@ const router = new VueRouter({
   routes
 })
 
-function nextFactory (context, middleware, index) {
-  const subsequentMiddleware = middleware[index]
-  if (!subsequentMiddleware) {
-    return context.next
-  }
-  return (...parameters) => {
-    context.next(...parameters)
-    const nextMiddleare = nextFactory(context, middleware, index + 1)
-    subsequentMiddleware({ ...context, next: nextMiddleare })
-  }
-}
+router.beforeEach(beforeEach)
 
-router.beforeEach((to, from, next) => {
-  const publicPages = [
-    '/auth/sign-in1',
-    '/auth/sign-up1',
-    '/dark/auth/sign-in1',
-    '/dark/auth/sign-up1',
-    '/pages-blank/home-0'
-  ]
-  if (publicPages.includes(to.path)) {
-    localStorage.removeItem('user')
-    localStorage.removeItem('access_token')
-  }
-
-  const authRequired = !publicPages.includes(to.path)
-  const loggedIn = localStorage.getItem('user')
-
-  /**
-   * Implement middleare vue-cli
-   * Learn how to work with middleware in vue-cli / vue - middleware are very powerful
-   * https://www.youtube.com/watch?v=ToIVxvdpx-A
-   */
-  if (to.meta.middleware) {
-    const context = { from, next, router, to, store }
-    const middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : [to.meta.middleware]
-    const nextMiddleware = nextFactory(context, middleware, 1)
-
-    return middleware[0]({ ...context, next: nextMiddleware })
-  }
-
-  if (to.meta.auth) {
-    if (authRequired && loggedIn === null) {
-      return next('/auth/sign-in1')
-    } else if (to.name === 'dashboard' || to.name === 'mini.dashboard') {
-      return next('/home-1')
-    }
-  }
-
-  next()
-})
+console.log(router.history.router.options.routes)
 
 export default router
