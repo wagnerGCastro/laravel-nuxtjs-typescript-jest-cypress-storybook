@@ -176,7 +176,7 @@
               >
                 <img :src="userProfile" class="img-fluid rounded mr-3" alt="user" />
                 <div class="caption">
-                  <h6 class="mb-0 line-height text-white">Nik jon</h6>
+                  <h6 class="mb-0 line-height text-white"> {{ userState.login }}</h6>
                   <span class="font-size-12 text-white">{{ $t('nav.user.available') }}</span>
                 </div>
               </a>
@@ -301,6 +301,8 @@ export default {
   },
   mounted () {
     this.layoutSetting(this.$route.name)
+
+    // console.log('userState', this.userState.first_name)
   },
   computed: {
     ...mapGetters({
@@ -310,7 +312,8 @@ export default {
       langsOptions: 'Setting/langOptionState',
       darkMode: 'Setting/darkModeState',
       rtlMode: 'Setting/rtlModeState',
-      colors: 'Setting/colorState'
+      colors: 'Setting/colorState',
+      userState: 'auth/userState'
     }),
     toggleSideIcon () {
       let show = true
@@ -437,9 +440,14 @@ export default {
       core.triggerSet()
       this.$store.dispatch('Setting/miniSidebarAction')
     },
-    logout () {
+    async logout () {
       localStorage.removeItem('user')
+      localStorage.removeItem('front-app')
       localStorage.removeItem('access_token')
+      localStorage.removeItem('token_api')
+
+      await this.logoutAction()
+
       this.$router.push({ name: 'auth1.sign-in1' })
     },
     langChange (lang) {
@@ -460,7 +468,8 @@ export default {
       langChangeState: 'Setting/setLangAction',
       rtlAdd: 'Setting/setRtlAction',
       rtlRemove: 'Setting/removeRtlAction',
-      modeChange: 'Setting/layoutModeAction'
+      modeChange: 'Setting/layoutModeAction',
+      logoutAction: 'auth/logoutAction'
     })
   }
 }

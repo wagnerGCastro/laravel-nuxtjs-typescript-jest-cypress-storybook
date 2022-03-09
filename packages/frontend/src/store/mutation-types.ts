@@ -1,0 +1,7 @@
+
+export const AUTH_SET_USER = 'AUTH/SET_USER'
+export const AUTH_SET_TOKEN = 'AUTH/SET_TOKEN'
+export const AUTH_SET_EXPIRES = 'AUTH/SET_EXPIRES'
+export const AUTH_LOADED = 'AUTH/AUTH_LOADED'
+export const AUTH_LOADING = 'AUTH/AUTH_LOADING'
+export const AUTH_ERROR = 'AUTH/AUTH_ERROR'

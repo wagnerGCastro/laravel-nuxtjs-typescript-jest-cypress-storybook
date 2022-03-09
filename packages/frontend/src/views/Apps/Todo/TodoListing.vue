@@ -20,7 +20,7 @@ import { core } from '../../../config/pluginInit'
 import ProjectList from '../Todo/ProjectList'
 import TaskList from '../Todo/TaskList'
 import { mapGetters } from 'vuex'
-import Todo from '../../../store/Todo'
+import Todo from '../../../store/modules/Todo'
 export default {
   name: 'TodoListing',
   components: { ProjectList, TaskList },
