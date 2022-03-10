@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import setting from '../../setting'
 
 const cookies = {}
-const namecookie = `frontend-${setting.releases.version}-${name}`;
+const namecookie = `frontend-${setting.releases.version}-${name}`
 
 cookies.set = function (name = 'default', value = '', cookieSetting = {}) {
   const currentCookieSetting = {
