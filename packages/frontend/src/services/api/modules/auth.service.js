@@ -1,5 +1,5 @@
-import BaseService from './base.service'
-import { storageService } from '../storage/index'
+import BaseService from '../base.service'
+import { storageService } from '../../storage/index'
 
 export default class AuthService extends BaseService {
   static async auth (params) {
@@ -26,7 +26,7 @@ export default class AuthService extends BaseService {
           resolve(res.data.user)
         })
         .catch(error => {
-          // storageService.removeToken(TOKEN_KEY)
+          storageService.removeToken()
           reject(error.response)
         })
     })
@@ -36,10 +36,12 @@ export default class AuthService extends BaseService {
     return new Promise((resolve, reject) => {
       this.request({ auth: true }).post('/auth/logout')
         .then(() => {
-          storageService.removeToken()
-          resolve('ok')
+          resolve()
         })
         .catch(error => reject(error.response))
+        .finally(() => {
+          storageService.removeToken()
+        })
     })
   }
 }

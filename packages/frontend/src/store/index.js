@@ -39,7 +39,7 @@ export default new Vuex.Store({
   })]
 })
 
-// if (ls.get(VUE_APP_KEY_STORE)) {
-//   const storageApp = JSON.parse(ls.get('front-app'))
-//   console.log('storageApp.auth', storageApp.auth)
-// }
+if (ls.get(VUE_APP_KEY_STORE)) {
+  const storageApp = JSON.parse(ls.get('front-app'))
+  console.log('storageApp.auth', storageApp.auth)
+}
