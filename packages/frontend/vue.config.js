@@ -1,6 +1,4 @@
 const webpack = require('webpack')
-const path = require('path')
-const resolve = dir => require('path').join(__dirname, dir)
 
 console.log('Use env: ', process.env.NODE_ENV)
 console.log('Base url: ', process.env.VUE_APP_BASE_URL)
@@ -23,14 +21,7 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ],
-    resolve: {
-      alias: {
-        vue$: 'vue/dist/vue.common.js',
-        '~': path.resolve(__dirname, './'),
-        '@': path.resolve(__dirname, './src/')
-      }
-    }
+    ]
   },
 
   pluginOptions: {
@@ -39,9 +30,12 @@ module.exports = {
       fallbackLocale: 'en',
       localeDir: 'locales',
       enableInSFC: false
+    },
+    'resolve-alias': {
+      alias: {
+        '~': './',
+        '@': './src'
+      }
     }
-  },
-  chainWebpack: config => {
-    config.resolve.alias.set('@', resolve('src'))
   }
 }
