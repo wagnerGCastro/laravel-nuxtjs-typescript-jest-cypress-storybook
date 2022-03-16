@@ -1,4 +1,9 @@
 # Referencies
+  # Hosts
+  - 8040:8040 # backend     # http://backend.local:8040
+  - 8041:8041 # frontend    # http://frontend.local:8041
+  - 8042:8042 # ecommerce
+  - 8043:8043 # mobile
 
 # Comands Utilities
   # git
@@ -34,3 +39,4 @@
 
   # Mysql
     - ALTER TABLE myTabel AUTO_INCREMENT=0;
+

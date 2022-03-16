@@ -1,4 +1,4 @@
-import { AUTH_SET_USER, AUTH_SET_TOKEN, AUTH_SET_EXPIRES } from '@/store/mutation-types'
+import { AUTH_SET_USER, AUTH_SET_TOKEN, AUTH_SET_EXPIRES } from '../../mutation-types'
 
 export default {
   [AUTH_SET_TOKEN] (state, token) {
