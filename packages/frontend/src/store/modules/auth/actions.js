@@ -1,6 +1,6 @@
 
-import AuthService from '@/services/api/auth.service'
-import { AUTH_SET_USER, AUTH_SET_TOKEN } from '@/store/mutation-types'
+import AuthService from '../../../services/api/modules/auth.service'
+import { AUTH_SET_USER, AUTH_SET_TOKEN } from '../../mutation-types'
 
 export default {
   async loginAction ({ commit }, params) {
@@ -32,25 +32,14 @@ export default {
   async logoutAction ({ commit }) {
     // commit('CHANGE_LOADING', true)
 
-    commit(AUTH_SET_USER, {})
-    commit(AUTH_SET_TOKEN, '')
-
-    // return await AuthService.logout()
-    //   .then(() => commit('LOGOUT'))
-    //   .finally(() => commit('CHANGE_LOADING', false))
-  },
-
-  checkTokenAction ({ dispatch, state }) {
-    if (state.token) {
-      return Promise.resolve(state.token)
-    }
-
-    const token = false // storage.getToken()
-
-    if (!token) {
-      return Promise.reject(new Error('[107] - actionCheckToken: Token Inválido'))
-    }
-
-    return dispatch('actionLoadSession', token)
+    return await AuthService.logout()
+      .then(() => {
+        console.log('logout com sucesso')
+      })
+      .finally(() => {
+        // commit('CHANGE_LOADING', false)
+        commit(AUTH_SET_USER, {})
+        commit(AUTH_SET_TOKEN, '')
+      })
   }
 }

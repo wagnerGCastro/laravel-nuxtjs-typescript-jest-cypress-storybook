@@ -1,9 +1,11 @@
 import ls from '../../libs/secure-ls'
-import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '../../config/api'
+import { TOKEN_KEY, REFRESH_TOKEN_KEY, VUE_APP_KEY_STORE } from '../../config/api'
 
 export const storageService = {
   getToken () {
-    return ls.get(TOKEN_KEY)
+    const storageApp = JSON.parse(ls.get(VUE_APP_KEY_STORE))
+    console.log('storageApp?.aut?.token', storageApp?.auth.token)
+    return storageApp?.auth?.token
   },
 
   saveToken (accessToken: string) {

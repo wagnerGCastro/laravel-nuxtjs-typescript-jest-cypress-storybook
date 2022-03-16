@@ -41,15 +41,19 @@ export default async (to, from, next) => {
     return middleware[0]({ ...context, next: nextMiddleware })
   }
 
-  // If public pages
+  /** If public pages */
   if (publicPagesNotToken.includes(to.path) && hasToken) {
     return next({ name: DASHBOARD_1_NAME })
   }
 
-  // If private pages
+  /**  If private pages */
   if (to.meta.auth && !hasToken) {
     return next(AUTH_SIGN_PATH)
   }
 
-  next()
+  if (to.path === '/') {
+    return next({ name: DASHBOARD_1_NAME })
+  }
+
+  return next()
 }

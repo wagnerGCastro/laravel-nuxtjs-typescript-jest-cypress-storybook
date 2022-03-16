@@ -441,12 +441,15 @@ export default {
       this.$store.dispatch('Setting/miniSidebarAction')
     },
     async logout () {
-      localStorage.removeItem('user')
-      localStorage.removeItem('front-app')
-      localStorage.removeItem('access_token')
-      localStorage.removeItem('token_api')
+      // localStorage.removeItem('front-app')
+      // localStorage.removeItem('access_token')
+      // localStorage.removeItem('token_api')
 
-      await this.logoutAction()
+      try {
+        await this.logoutAction()
+      } catch (error) {
+        console.log('Logout Error', error)
+      }
 
       this.$router.push({ name: 'auth1.sign-in1' })
     },
