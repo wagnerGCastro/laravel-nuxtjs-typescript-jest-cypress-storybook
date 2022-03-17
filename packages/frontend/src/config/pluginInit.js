@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import Scrollbar from 'smooth-scrollbar'
 import Snackbar from 'node-snackbar'
 import Store from '../store/index'
@@ -172,7 +173,7 @@ export const core = {
     const elementExist = this.checkElement('class', 'iq-full-screen')
     if (elementExist) {
       const element = document.querySelector('.iq-full-screen')
-      element.addEventListener('click', function (e) {
+      element.addEventListener('click', function () {
         if (!document.fullscreenElement &&
           !document.mozFullScreenElement &&
           !document.webkitFullscreenElement &&
@@ -412,6 +413,7 @@ export const animation = {
     },
     bounce: function (progress) {
       // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
         if (progress >= (7 - 4 * a) / 11) {
           return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2)

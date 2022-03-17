@@ -15,10 +15,10 @@
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
+import { core } from '@/config/pluginInit'
 import HighCharts from 'highcharts'
 import More from 'highcharts/highcharts-more'
-import HighChart from '../../components/core/charts/HighChart'
+import HighChart from '@/components/core/charts/HighChart'
 More(HighCharts)
 export default {
   name: 'HighCharts',

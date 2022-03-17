@@ -47,6 +47,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
 import { statusErrors } from '../../../../utils/status-errors'

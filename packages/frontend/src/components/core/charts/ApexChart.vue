@@ -2,6 +2,7 @@
   <div :id="element"></div>
 </template>
 <script>
+/* eslint-disable */
 import ApexCharts from 'apexcharts'
 export default {
   name: 'ApexChart',

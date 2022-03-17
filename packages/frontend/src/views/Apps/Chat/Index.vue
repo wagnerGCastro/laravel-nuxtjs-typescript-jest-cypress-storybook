@@ -100,7 +100,7 @@
 
                 <div
                   class="col-lg-9 chat-data p-0 chat-data-right"
-                  :style="`background: url(${require('../../../assets/images/page-img/100.jpg')}) no-repeat scroll center center;background-size: cover;`"
+                  :style="`background: url(${require('@/assets/images/page-img/100.jpg')}) no-repeat scroll center center;background-size: cover;`"
                 >
                   <tab-content id="v-pills-tabContent">
                     <tab-content-item
@@ -374,13 +374,13 @@
 <script>
 import * as Cookies from 'js-cookie'
 import { mapGetters } from 'vuex'
-import { Users, MessagesUser1 } from '../../../fackApi/api/chat'
-import { core } from '../../../config/pluginInit'
-import Chat from '../../../store/modules/Todo'
-import User from '../../../model/User'
-import ChatItem from '../../../components/Chat/ChatItem'
-import ToggleButton from '../../../components/Chat/ToggleButton'
-import ToggleContent from '../../../components/Chat/ToggleContent'
+import { Users, MessagesUser1 } from '@/fackApi/api/chat'
+import { core } from '@/config/pluginInit'
+import Chat from '@/store/modules/Todo'
+import User from '@/model/User'
+import ChatItem from '@/components/Chat/ChatItem'
+import ToggleButton from '@/components/Chat/ToggleButton'
+import ToggleContent from '@/components/Chat/ToggleContent'
 const VideoCall = () => import('./VideoCall')
 
 export default {
@@ -405,7 +405,7 @@ export default {
         id: 1,
         name: 'Anna Sthesia',
         role: 'Developer',
-        image: require('../../../assets/images/user/user-08.jpg'),
+        image: require('@/assets/images/user/user-08.jpg'),
         isActive: true
       }),
       usersList: Users,
@@ -446,7 +446,7 @@ export default {
         }
         return final
       }
-      return require('../../../assets/images/user/user-05.jpg')
+      return require('@/assets/images/user/user-05.jpg')
     },
     generate () {
       this.channel = core.random(24)

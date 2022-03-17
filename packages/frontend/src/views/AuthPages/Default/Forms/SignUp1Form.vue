@@ -52,6 +52,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import auth from '../../../../services/auth'
 import firebase from 'firebase'
 import SocialLoginForm from './SocialLoginForm'

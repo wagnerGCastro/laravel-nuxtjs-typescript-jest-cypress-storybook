@@ -56,6 +56,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 import CartList from './CartList'
 export default {
   name: 'Step1Cart',

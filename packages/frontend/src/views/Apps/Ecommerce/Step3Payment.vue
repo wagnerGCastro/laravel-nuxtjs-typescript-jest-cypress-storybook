@@ -76,6 +76,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 export default {
   name: 'Step3Payment',
   data () {

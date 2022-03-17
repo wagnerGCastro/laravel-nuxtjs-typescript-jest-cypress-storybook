@@ -209,7 +209,7 @@
               <SwiperSlide class="d-flex align-items-center">
                 <div class="post-image">
                   <a href="javascript:void(0);">
-                    <img :src="require('../../assets/images/page-img/p-2.jpg')" alt="post-image" class="img-fluid rounded">
+                    <img :src="require('@/assets/images/page-img/p-2.jpg')" alt="post-image" class="img-fluid rounded">
                   </a>
                 </div>
                 <div class="post-content pl-3 pr-3">
@@ -232,7 +232,7 @@
               <SwiperSlide class="d-flex align-items-center">
                 <div class="post-image">
                   <a href="javascript:void(0);">
-                    <img :src="require('../../assets/images/page-img/p-3.jpg')" alt="post-image" class="img-fluid rounded">
+                    <img :src="require('@/assets/images/page-img/p-3.jpg')" alt="post-image" class="img-fluid rounded">
                   </a>
                 </div>
                 <div class="post-content pl-3 pr-3">
@@ -255,7 +255,7 @@
               <SwiperSlide class="d-flex align-items-center">
                 <div class="post-image">
                   <a href="javascript:void(0);">
-                    <img :src="require('../../assets/images/page-img/p-4.jpg')" alt="post-image" class="img-fluid rounded">
+                    <img :src="require('@/assets/images/page-img/p-4.jpg')" alt="post-image" class="img-fluid rounded">
                   </a>
                 </div>
                 <div class="post-content pl-3 pr-3">
@@ -278,7 +278,7 @@
               <SwiperSlide class="d-flex align-items-center">
                 <div class="post-image">
                   <a href="javascript:void(0);">
-                    <img :src="require('../../assets/images/page-img/p-5.jpg')" alt="post-image" class="img-fluid rounded">
+                    <img :src="require('@/assets/images/page-img/p-5.jpg')" alt="post-image" class="img-fluid rounded">
                   </a>
                 </div>
                 <div class="post-content pl-3 pr-3">
@@ -306,15 +306,15 @@
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
-import AmChart from '../../components/core/charts/AmChart'
+import { core } from '@/config/pluginInit'
+import AmChart from '@/components/core/charts/AmChart'
 import { Arabic } from 'flatpickr/dist/l10n/ar'
 import { english } from 'flatpickr/dist/l10n/default'
 import { mapGetters } from 'vuex'
-import Swiper from '../../components/core/slider/Swiper'
-import SwiperNav from '../../components/core/slider/SwiperNav'
-import SwiperSlide from '../../components/core/slider/SwiperSlide'
-import Counter from '../../components/core/counter/Counter'
+import Swiper from '@/components/core/slider/Swiper'
+import SwiperNav from '@/components/core/slider/SwiperNav'
+import SwiperSlide from '@/components/core/slider/SwiperSlide'
+import Counter from '@/components/core/counter/Counter'
 export default {
   name: 'Dashboard2',
   components: { AmChart, Counter, Swiper, SwiperNav, SwiperSlide },
@@ -862,105 +862,105 @@ export default {
       usersList: [{
         name: 'Anna Sthesia',
         role: 'Admin',
-        image: require('../../assets/images/user/user-01.jpg'),
+        image: require('@/assets/images/user/user-01.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Paul Molive',
         role: 'User',
-        image: require('../../assets/images/user/user-02.jpg'),
+        image: require('@/assets/images/user/user-02.jpg'),
         link: '',
         isActive: false
       },
       {
         name: 'Bob Frapples',
         role: 'Auther',
-        image: require('../../assets/images/user/user-03.jpg'),
+        image: require('@/assets/images/user/user-03.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Barb Ackue',
         role: 'Editor',
-        image: require('../../assets/images/user/user-04.jpg'),
+        image: require('@/assets/images/user/user-04.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Greta Life',
         role: 'User',
-        image: require('../../assets/images/user/user-05.jpg'),
+        image: require('@/assets/images/user/user-05.jpg'),
         link: '',
         isActive: false
       },
       {
         name: 'Ira Membrit',
         role: 'User',
-        image: require('../../assets/images/user/user-06.jpg'),
+        image: require('@/assets/images/user/user-06.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Pete Sariya',
         role: 'Editor',
-        image: require('../../assets/images/user/user-07.jpg'),
+        image: require('@/assets/images/user/user-07.jpg'),
         link: '',
         isActive: false
       },
       {
         name: 'Anna Sthesia',
         role: 'Editor',
-        image: require('../../assets/images/user/user-08.jpg'),
+        image: require('@/assets/images/user/user-08.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Paul Molive',
         role: 'Author',
-        image: require('../../assets/images/user/user-09.jpg'),
+        image: require('@/assets/images/user/user-09.jpg'),
         link: '',
         isActive: false
       },
       {
         name: 'Bob Frapples',
         role: 'User',
-        image: require('../../assets/images/user/user10.jpg'),
+        image: require('@/assets/images/user/user10.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Anna Sthesia',
         role: 'Admin',
-        image: require('../../assets/images/user/user-01.jpg'),
+        image: require('@/assets/images/user/user-01.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Paul Molive',
         role: 'User',
-        image: require('../../assets/images/user/user-02.jpg'),
+        image: require('@/assets/images/user/user-02.jpg'),
         link: '',
         isActive: false
       },
       {
         name: 'Bob Frapples',
         role: 'Auther',
-        image: require('../../assets/images/user/user-03.jpg'),
+        image: require('@/assets/images/user/user-03.jpg'),
         link: '',
         isActive: false
       },
       {
         name: 'Barb Ackue',
         role: 'Editor',
-        image: require('../../assets/images/user/user-04.jpg'),
+        image: require('@/assets/images/user/user-04.jpg'),
         link: '',
         isActive: true
       },
       {
         name: 'Greta Life',
         role: 'User',
-        image: require('../../assets/images/user/user-05.jpg'),
+        image: require('@/assets/images/user/user-05.jpg'),
         link: '',
         isActive: true
       }
@@ -993,12 +993,12 @@ export default {
         child: {
           type: 'img',
           items: [
-            require('../../assets/images/user/user-05.jpg'),
-            require('../../assets/images/user/user-06.jpg'),
-            require('../../assets/images/user/user-07.jpg'),
-            require('../../assets/images/user/user-08.jpg'),
-            require('../../assets/images/user/user-09.jpg'),
-            require('../../assets/images/user/user10.jpg')
+            require('@/assets/images/user/user-05.jpg'),
+            require('@/assets/images/user/user-06.jpg'),
+            require('@/assets/images/user/user-07.jpg'),
+            require('@/assets/images/user/user-08.jpg'),
+            require('@/assets/images/user/user-09.jpg'),
+            require('@/assets/images/user/user10.jpg')
           ]
         }
       },

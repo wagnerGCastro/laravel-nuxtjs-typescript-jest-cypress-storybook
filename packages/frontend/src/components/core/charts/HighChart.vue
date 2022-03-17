@@ -2,6 +2,7 @@
   <highcharts :options="option"></highcharts>
 </template>
 <script>
+/* eslint-disable */
 import { Chart } from 'highcharts-vue'
 export default {
   name: 'HighChart',

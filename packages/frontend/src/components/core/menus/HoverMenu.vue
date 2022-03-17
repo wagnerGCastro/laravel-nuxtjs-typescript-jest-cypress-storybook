@@ -16,6 +16,7 @@
   </ul>
 </template>
 <script>
+/* eslint-disable */
 import List from './CollapseMenu'
 import { core } from '../../../config/pluginInit'
 export default {

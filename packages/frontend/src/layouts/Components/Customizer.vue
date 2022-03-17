@@ -32,14 +32,14 @@
               <h4 class="text-left mb-2">{{ $t('customizer.colorMode') }}</h4>
               <div class="text-center d-flex justify-content-around">
                 <img
-                  :src="require('../../assets/images/customizer/customizer-01.png')"
+                  :src="require('@/assets/images/customizer/customizer-01.png')"
                   alt="light"
                   @click="themeMode(false)"
                   class="img-fluid"
                   style="height: 150px;border: 2px solid var(--iq-primary)"
                 />
                 <img
-                  :src="require('../../assets/images/customizer/customizer-03.png')"
+                  :src="require('@/assets/images/customizer/customizer-03.png')"
                   alt="dark"
                   @click="themeMode(true)"
                   class="img-fluid"
@@ -61,14 +61,14 @@
               <h4 class="text-left mb-2">{{ $t('customizer.rtlMode')}}</h4>
               <div class="text-center d-flex justify-content-around">
                 <img
-                  :src="require('../../assets/images/customizer/ltr-img.png')"
+                  :src="require('@/assets/images/customizer/ltr-img.png')"
                   alt="ltr"
                   @click="rtlChange(false)"
                   class="img-fluid"
                   style="height: 150px;border: 2px solid var(--iq-primary)"
                 />
                 <img
-                  :src="require('../../assets/images/customizer/rtl-img.png')"
+                  :src="require('@/assets/images/customizer/rtl-img.png')"
                   alt="rtl"
                   @click="rtlChange(true)"
                   class="img-fluid"
@@ -96,9 +96,9 @@
   </div>
 </template>
 <script>
-import darkLoader from '../../assets/images/darkMode/dark-logo.gif'
-import loader from '../../assets/images/loader.gif'
-import RightSideBar from '../../components/core/rightsidebar/RightSideBar'
+import darkLoader from '@/assets/images/darkMode/dark-logo.gif'
+import loader from '@/assets/images/loader.gif'
+import RightSideBar from '@/components/core/rightsidebar/RightSideBar'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Customizer',

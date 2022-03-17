@@ -8,7 +8,7 @@
             <div class="iq-advance-course d-flex align-items-center justify-content-between">
               <div class="left-block">
                 <div class="d-flex align-items-center">
-                  <img src="../../assets/images/page-img/28.png" class="img-fluid" />
+                  <img src="@/assets/images/page-img/28.png" class="img-fluid" />
                   <div class="ml-3">
                     <h4 class>Achieve Your Goal By Signing Up To Our Advanced Course</h4>
                     <p
@@ -20,11 +20,11 @@
               <div class="right-block position-relativ">
                 <button type="button" class="btn btn-primary">Start Now</button>
                 <img
-                  src="../../assets/images/page-img/34.png"
+                  src="@/assets/images/page-img/34.png"
                   class="img-fluid image-absulute image-absulute-1"
                 />
                 <img
-                  src="../../assets/images/page-img/35.png"
+                  src="@/assets/images/page-img/35.png"
                   class="img-fluid image-absulute image-absulute-2"
                 />
               </div>
@@ -201,7 +201,7 @@
           <template v-slot:body>
             <div class="d-flex align-items-center">
               <div class="rounded-circle iq-card-icon">
-                <img src="../../assets/images/page-img/25.png" class="img-fluid" alt="logo" />
+                <img src="@/assets/images/page-img/25.png" class="img-fluid" alt="logo" />
               </div>
               <div class="text-left ml-3">
                 <h6>Angular Js</h6>
@@ -216,7 +216,7 @@
           <template v-slot:body>
             <div class="d-flex align-items-center">
               <div class="rounded-circle iq-card-icon">
-                <img src="../../assets/images/page-img/26.png" class="img-fluid" alt="logo" />
+                <img src="@/assets/images/page-img/26.png" class="img-fluid" alt="logo" />
               </div>
               <div class="text-left ml-3">
                 <h6>Bootstrap</h6>
@@ -231,7 +231,7 @@
           <template v-slot:body>
             <div class="d-flex align-items-center">
               <div class="rounded-circle iq-card-icon">
-                <img src="../../assets/images/page-img/27.png" class="img-fluid" alt="logo" />
+                <img src="@/assets/images/page-img/27.png" class="img-fluid" alt="logo" />
               </div>
               <div class="text-left ml-3">
                 <h6>React Js</h6>
@@ -246,7 +246,7 @@
           <template v-slot:body>
             <div class="d-flex align-items-center">
               <div class="rounded-circle iq-card-icon">
-                <img src="../../assets/images/page-img/24.png" class="img-fluid" alt="logo" />
+                <img src="@/assets/images/page-img/24.png" class="img-fluid" alt="logo" />
               </div>
               <div class="text-left ml-3">
                 <h6>Vue Js</h6>
@@ -297,7 +297,7 @@
                     <td class="text-center">
                       <img
                         class="rounded-circle img-fluid avatar-40"
-                        src="../../assets/images/user/user-01.jpg"
+                        src="@/assets/images/user/user-01.jpg"
                         alt="profile"
                       />
                     </td>
@@ -315,7 +315,7 @@
                     <td class="text-center">
                       <img
                         class="rounded-circle img-fluid avatar-40"
-                        src="../../assets/images/user/user-02.jpg"
+                        src="@/assets/images/user/user-02.jpg"
                         alt="profile"
                       />
                     </td>
@@ -333,7 +333,7 @@
                     <td class="text-center">
                       <img
                         class="rounded-circle img-fluid avatar-40"
-                        src="../../assets/images/user/user-03.jpg"
+                        src="@/assets/images/user/user-03.jpg"
                         alt="profile"
                       />
                     </td>
@@ -351,7 +351,7 @@
                     <td class="text-center">
                       <img
                         class="rounded-circle img-fluid avatar-40"
-                        src="../../assets/images/user/user-04.jpg"
+                        src="@/assets/images/user/user-04.jpg"
                         alt="profile"
                       />
                     </td>
@@ -369,7 +369,7 @@
                     <td class="text-center">
                       <img
                         class="rounded-circle img-fluid avatar-40"
-                        src="../../assets/images/user/user-05.jpg"
+                        src="@/assets/images/user/user-05.jpg"
                         alt="profile"
                       />
                     </td>
@@ -393,9 +393,9 @@
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
-import Swiper from '../../components/core/slider/Swiper'
-import SwiperSlide from '../../components/core/slider/SwiperSlide'
+import { core } from '@/config/pluginInit'
+import Swiper from '@/components/core/slider/Swiper'
+import SwiperSlide from '@/components/core/slider/SwiperSlide'
 export default {
   name: 'Dashboard5',
   mounted () {
