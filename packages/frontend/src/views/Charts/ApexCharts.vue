@@ -15,8 +15,8 @@
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
-import ApexChart from '../../components/core/charts/ApexChart'
+import { core } from '@/config/pluginInit'
+import ApexChart from '@/components/core/charts/ApexChart'
 export default {
   name: 'ApexCharts',
   mounted () {

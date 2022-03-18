@@ -94,7 +94,7 @@
       <b-col md="5">
         <div class="iq-card">
           <div class="iq-card-body p-0">
-            <img :src="require('../../assets/images/page-img/33.png')" alt="banner-img" class="rounded w-100 img-fluid">
+            <img :src="require('@/assets/images/page-img/33.png')" alt="banner-img" class="rounded w-100 img-fluid">
             <div class="iq-caption">
               <h1>450</h1>
               <p>{{ $t('dashboard1.invoice') }}</p>
@@ -174,7 +174,7 @@
           <b-col md="6">
             <iq-card body-class="p-0">
               <template v-slot:body>
-                <b-img :src="require('../../assets/images/booking/booking-03.png')" alt="03" fluid class="rounded" />
+                <b-img :src="require('@/assets/images/booking/booking-03.png')" alt="03" fluid class="rounded" />
               </template>
             </iq-card>
           </b-col>
@@ -284,9 +284,9 @@
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
-import AmChart from '../../components/core/charts/AmChart'
-import ApexChart from '../../components/core/charts/ApexChart'
+import { core } from '@/config/pluginInit'
+import AmChart from '@/components/core/charts/AmChart'
+import ApexChart from '@/components/core/charts/ApexChart'
 export default {
   name: 'Dashboard1',
   components: { AmChart, ApexChart },

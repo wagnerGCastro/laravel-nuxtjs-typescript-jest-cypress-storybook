@@ -12,8 +12,9 @@
   </div>
 </template>
 <script>
-import MiniFooter from '../../components/core/footer/MiniFooter'
-import { APPNAME } from '../../config/pluginInit'
+/* eslint-disable */
+import MiniFooter from '@/components/core/footer/MiniFooter'
+import { APPNAME } from '@/config/pluginInit'
 export default {
   name: 'LayoutFooter',
   components: {

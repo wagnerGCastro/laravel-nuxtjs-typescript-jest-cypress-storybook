@@ -2,6 +2,7 @@
   <div :id="element" :style="'height: '+height+'px;'"></div>
 </template>
 <script>
+/* eslint-disable */
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import * as am4maps from '@amcharts/amcharts4/maps'

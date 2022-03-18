@@ -157,6 +157,7 @@
   </b-row>
 </template>
 <script>
+/* eslint-disable */
 import { Users } from '../../../fackApi/api/chat'
 import TaskForm from './TaskForm'
 import { mapGetters } from 'vuex'

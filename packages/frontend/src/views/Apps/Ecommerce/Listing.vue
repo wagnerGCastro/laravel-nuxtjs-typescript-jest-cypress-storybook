@@ -109,13 +109,14 @@
   </b-container>
 </template>
 <script>
+/* eslint-disable */
 import algoliasearch from 'algoliasearch/lite'
 import 'instantsearch.css/themes/reset-min.css'
 import 'instantsearch.css/themes/algolia-min.css'
 import EcommerceFilter from './EcommerceFilter'
-import { APP_ID, APP_KEY } from '../../../config/algolia'
-import { core } from '../../../config/pluginInit'
-import NoResults from '../../../components/core/NotFound/NoResults'
+import { APP_ID, APP_KEY } from '@/config/algolia'
+import { core } from '@/config/pluginInit'
+import NoResults from '@/components/core/NotFound/NoResults'
 import ResetFilter from './ResetFilter'
 import ProductList from './ProductList'
 import ProductGrid from './ProductGrid'

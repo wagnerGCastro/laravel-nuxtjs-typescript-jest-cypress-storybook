@@ -14,7 +14,7 @@
             </div>
             <p class=" mb-0 mt-3">Total for This Month.</p>
             <div class="background-image">
-              <img src="../../assets/images/page-img/36.png" class="img-fluid">
+              <img src="@/assets/images/page-img/36.png" class="img-fluid">
             </div>
           </template>
         </iq-card>
@@ -31,7 +31,7 @@
             </div>
             <p class=" mb-0 mt-3">Total for This Month.</p>
             <div class="background-image">
-              <img src="../../assets/images/page-img/37.png" class="img-fluid">
+              <img src="@/assets/images/page-img/37.png" class="img-fluid">
             </div>
           </template>
         </iq-card>
@@ -48,7 +48,7 @@
             </div>
             <p class=" mb-0 mt-3">Total for This Month.</p>
             <div class="background-image">
-              <img src="../../assets/images/page-img/38.png" class="img-fluid">
+              <img src="@/assets/images/page-img/38.png" class="img-fluid">
             </div>
           </template>
         </iq-card>
@@ -65,7 +65,7 @@
             </div>
             <p class=" mb-0 mt-3">Total for This Month.</p>
             <div class="background-image">
-              <img src="../../assets/images/page-img/39.png" class="img-fluid">
+              <img src="@/assets/images/page-img/39.png" class="img-fluid">
             </div>
           </template>
         </iq-card>
@@ -97,7 +97,7 @@
       </b-col>
       <b-col lg="4">
         <iq-card class-name="iq-card-block iq-card-stretch iq-card-height">
-          <div :style="`background: url(${require('../../assets/images/page-img/40.png')}) no-repeat scroll bottom; background-size: contain; height: 505px;`">
+          <div :style="`background: url(${require('@/assets/images/page-img/40.png')}) no-repeat scroll bottom; background-size: contain; height: 505px;`">
           </div>
         </iq-card>
       </b-col>
@@ -121,7 +121,7 @@
           <template v-slot:body>
             <ul class="perfomer-lists m-0 p-0">
               <li class="d-flex mb-4 align-items-center">
-                <div class="user-img img-fluid"><img src="../../assets/images/user/user-01.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
+                <div class="user-img img-fluid"><img src="@/assets/images/user/user-01.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
                 <div class="media-support-info ml-3">
                   <h6>Paul Molive</h6>
                   <p class="mb-0 font-size-12">UI/UX Designer</p>
@@ -139,7 +139,7 @@
                 </div>
               </li>
               <li class="d-flex mb-4 align-items-center">
-                <div class="user-img img-fluid"><img src="../../assets/images/user/user-02.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
+                <div class="user-img img-fluid"><img src="@/assets/images/user/user-02.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
                 <div class="media-support-info ml-3">
                   <h6>Barb Dwyer</h6>
                   <p class="mb-0 font-size-12">Developer</p>
@@ -157,7 +157,7 @@
                 </div>
               </li>
               <li class="d-flex mb-4 align-items-center">
-                <div class="user-img img-fluid"><img src="../../assets/images/user/user-03.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
+                <div class="user-img img-fluid"><img src="@/assets/images/user/user-03.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
                 <div class="media-support-info ml-3">
                   <h6>Terry Aki</h6>
                   <p class="mb-0 font-size-12">Tester</p>
@@ -175,7 +175,7 @@
                 </div>
               </li>
               <li class="d-flex mb-4 align-items-center">
-                <div class="user-img img-fluid"><img src="../../assets/images/user/user-04.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
+                <div class="user-img img-fluid"><img src="@/assets/images/user/user-04.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
                 <div class="media-support-info ml-3">
                   <h6>Robin Banks</h6>
                   <p class="mb-0 font-size-12">Web Designer</p>
@@ -193,7 +193,7 @@
                 </div>
               </li>
               <li class="d-flex mb-4 align-items-center">
-                <div class="user-img img-fluid"><img src="../../assets/images/user/user-05.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
+                <div class="user-img img-fluid"><img src="@/assets/images/user/user-05.jpg" alt="story-img" class="rounded-circle avatar-40"></div>
                 <div class="media-support-info ml-3">
                   <h6>Barry Wine</h6>
                   <p class="mb-0 font-size-12">Developer</p>
@@ -338,9 +338,9 @@
   </b-container>
 </template>
 <script>
-import AmChart from '../../components/core/charts/AmChart'
-import ApexChart from '../../components/core/charts/ApexChart'
-import { core } from '../../config/pluginInit'
+import AmChart from '@/components/core/charts/AmChart'
+import ApexChart from '@/components/core/charts/ApexChart'
+import { core } from '@/config/pluginInit'
 export default {
   name: 'Dashboard6',
   mounted () {

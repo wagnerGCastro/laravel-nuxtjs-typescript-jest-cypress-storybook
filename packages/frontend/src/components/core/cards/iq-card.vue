@@ -19,6 +19,8 @@
   </div>
 </template>
 <script>
+
+/* eslint-disable */
 export default {
   name: 'iq-card',
   props: {

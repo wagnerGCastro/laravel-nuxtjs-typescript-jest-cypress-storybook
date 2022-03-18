@@ -188,7 +188,7 @@
                 <tbody>
                 <tr>
                   <td class="text-center">
-                    <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-01.jpg" alt="profile">
+                    <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-01.jpg" alt="profile">
                   </td>
                   <td>Anna Sthesia</td>
                   <td>Electronic</td>
@@ -198,7 +198,7 @@
                 </tr>
                 <tr>
                   <td class="text-center">
-                    <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-02.jpg" alt="profile">
+                    <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-02.jpg" alt="profile">
                   </td>
                   <td>Brock Lee</td>
                   <td>Laptop</td>
@@ -208,7 +208,7 @@
                 </tr>
                 <tr>
                   <td class="text-center">
-                    <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-03.jpg" alt="profile">
+                    <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-03.jpg" alt="profile">
                   </td>
                   <td>Dan Druff</td>
                   <td>Mobile</td>
@@ -218,7 +218,7 @@
                 </tr>
                 <tr>
                   <td class="text-center">
-                    <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-04.jpg" alt="profile">
+                    <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-04.jpg" alt="profile">
                   </td>
                   <td>Lynn Guini</td>
                   <td>Bluetooth</td>
@@ -228,7 +228,7 @@
                 </tr>
                 <tr>
                   <td class="text-center">
-                    <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-05.jpg" alt="profile">
+                    <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-05.jpg" alt="profile">
                   </td>
                   <td>Eric Shun</td>
                   <td>Camera</td>
@@ -328,8 +328,8 @@
     </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
-import AmChart from '../../components/core/charts/AmChart'
+import { core } from '@/config/pluginInit'
+import AmChart from '@/components/core/charts/AmChart'
 export default {
   name: 'Dashboard4',
   mounted () {

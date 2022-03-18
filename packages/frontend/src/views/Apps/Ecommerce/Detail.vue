@@ -92,11 +92,11 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { core } from '../../../config/pluginInit'
+import { core } from '@/config/pluginInit'
 import ProductGrid from './ProductGrid'
-import Swiper from '../../../components/core/slider/Swiper'
-import SwiperNav from '../../../components/core/slider/SwiperNav'
-import SwiperSlide from '../../../components/core/slider/SwiperSlide'
+import Swiper from '@/components/core/slider/Swiper'
+import SwiperNav from '@/components/core/slider/SwiperNav'
+import SwiperSlide from '@/components/core/slider/SwiperSlide'
 
 export default {
   name: 'Detail',

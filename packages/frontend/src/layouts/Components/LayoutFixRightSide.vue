@@ -57,7 +57,8 @@
   </div>
 </template>
 <script>
-const AmChart = () => import('../../components/core/charts/AmChart')
+/* eslint-disable */
+const AmChart = () => import('@/components/core/charts/AmChart')
 export default {
   name: 'LayoutFixRightside',
   components: {

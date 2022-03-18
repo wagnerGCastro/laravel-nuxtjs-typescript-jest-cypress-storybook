@@ -7,6 +7,7 @@
   <!-- loader END -->
 </template>
 <script>
+/* eslint-disable */
 import darkLoader from '../../../assets/images/darkMode/dark-logo.gif'
 import lightLoader from '../../../assets/images/logo.gif'
 import { animation } from '../../../config/pluginInit'

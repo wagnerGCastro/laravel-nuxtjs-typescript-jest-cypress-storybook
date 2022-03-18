@@ -219,6 +219,7 @@
   </b-container>
 </template>
 <script>
+/* eslint-disable */
 import { core } from '../../config/pluginInit'
 import { db } from '../../config/firebase'
 

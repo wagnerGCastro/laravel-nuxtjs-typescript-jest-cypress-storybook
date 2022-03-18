@@ -61,6 +61,7 @@
 </template>
 <script>
 export default {
+  /* eslint-disable */
   name: 'ProjectList',
   // props: ['projectList', 'categoryList'],
   props: ['selectedProject', 'selectedCategory', 'projectList', 'categoryList'],

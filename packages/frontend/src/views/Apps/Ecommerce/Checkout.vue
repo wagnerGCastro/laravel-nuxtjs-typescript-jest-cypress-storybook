@@ -26,11 +26,12 @@
   </b-container>
 </template>
 <script>
+/* eslint-disable */
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import Step1Cart from './Step1Cart'
 import Step2Address from './Step2Address'
 import Step3Payment from './Step3Payment'
-import { core } from '../../../config/pluginInit'
+import { core } from '@/config/pluginInit'
 import { mapGetters } from 'vuex'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 let wizardLeftButton
