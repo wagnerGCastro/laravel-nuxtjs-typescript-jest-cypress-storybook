@@ -102,6 +102,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
   name: 'EmailDetail',
   props: {

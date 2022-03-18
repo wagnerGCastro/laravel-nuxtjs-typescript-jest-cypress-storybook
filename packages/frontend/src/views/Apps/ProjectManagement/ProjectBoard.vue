@@ -98,6 +98,7 @@
   </b-container>
 </template>
 <script>
+/* eslint-disable */
 import { core, flatpickerSetting } from '../../../config/pluginInit'
 import draggable from 'vuedraggable'
 export default {

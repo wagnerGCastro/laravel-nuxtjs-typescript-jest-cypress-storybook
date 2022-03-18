@@ -136,13 +136,13 @@ data(){
                 :isOpened="true"
               >
                 <template v-slot:groupOpened>
-                  <img :src="require('../../assets/images/treeview/t-open-folder.png')" alt="" class="img-fluid height-25 mb-1">
+                  <img :src="require('@/assets/images/treeview/t-open-folder.png')" alt="" class="img-fluid height-25 mb-1">
                 </template>
                 <template v-slot:groupClosed>
-                  <img :src="require('../../assets/images/treeview/t-close-folder.png')" alt="" class="img-fluid height-25 mb-1">
+                  <img :src="require('@/assets/images/treeview/t-close-folder.png')" alt="" class="img-fluid height-25 mb-1">
                 </template>
                 <template v-slot:item>
-                  <img :src="require('../../assets/images/treeview/t-files.png')" alt="" class="img-fluid height-25 mb-1">
+                  <img :src="require('@/assets/images/treeview/t-files.png')" alt="" class="img-fluid height-25 mb-1">
                 </template>
               </TreeView>
             </ul>
@@ -153,8 +153,8 @@ data(){
   </b-container>
 </template>
 <script>
-import TreeView from '../../components/core/treeview/TreeView'
-import { core } from '../../config/pluginInit'
+import TreeView from '@/components/core/treeview/TreeView'
+import { core } from '@/config/pluginInit'
 export default {
   name: 'AppTreeView',
   components: { TreeView },

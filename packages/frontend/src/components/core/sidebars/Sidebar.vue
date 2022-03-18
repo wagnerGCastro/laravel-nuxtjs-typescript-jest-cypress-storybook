@@ -25,6 +25,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import CollapseMenu from '../menus/CollapseMenu'
 import { APPNAME } from '../../../config/pluginInit'
 export default {

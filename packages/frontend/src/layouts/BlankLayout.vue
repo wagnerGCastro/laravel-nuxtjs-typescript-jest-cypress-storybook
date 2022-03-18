@@ -7,8 +7,8 @@
   </div>
 </template>
 <script>
-import Loader from '../components/core/loader/Loader'
-import { core } from '../config/pluginInit'
+import Loader from '@/components/core/loader/Loader'
+import { core } from '@/config/pluginInit'
 export default {
   name: 'BlankLayout',
   components: {

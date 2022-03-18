@@ -87,6 +87,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 export default {
   name: 'Step2Address',
   data () {

@@ -82,7 +82,7 @@
             </li>
             <li class="nav-item" v-nav-toggle>
               <a href="#" class="search-toggle iq-waves-effect">
-                <lottie :option="require('../assets/images/small/lottie-bell')" id="lottie-beil" />
+                <lottie :option="require('@/assets/images/small/lottie-bell')" id="lottie-beil" />
                 <span class="bg-danger dots"></span>
               </a>
               <div class="iq-sub-dropdown">
@@ -117,7 +117,7 @@
             </li>
             <li class="nav-item" v-nav-toggle>
               <a href="#" class="search-toggle iq-waves-effect">
-                <lottie :option="require('../assets/images/small/lottie-mail')" id="lottie-mail" />
+                <lottie :option="require('@/assets/images/small/lottie-mail')" id="lottie-mail" />
                 <span class="bg-primary count-mail"></span>
               </a>
               <div class="iq-sub-dropdown">
@@ -297,7 +297,7 @@
             </li>
             <li class="nav-item" v-nav-toggle>
               <a href="#" class="search-toggle iq-waves-effect">
-                <lottie :option="require('../assets/images/small/lottie-bell')" id="lottie-beil" />
+                <lottie :option="require('@/assets/images/small/lottie-bell')" id="lottie-beil" />
                 <span class="bg-danger dots"></span>
               </a>
               <div class="iq-sub-dropdown">
@@ -332,7 +332,7 @@
             </li>
             <li class="nav-item" v-nav-toggle>
               <a href="#" class="search-toggle iq-waves-effect">
-                <lottie :option="require('../assets/images/small/lottie-mail')" id="lottie-mail" />
+                <lottie :option="require('@/assets/images/small/lottie-mail')" id="lottie-mail" />
                 <span class="bg-primary count-mail"></span>
               </a>
               <div class="iq-sub-dropdown">
@@ -455,21 +455,21 @@
   </div>
 </template>
 <script>
-import Loader from '../components/core/loader/Loader'
-import DefaultNavBar from '../components/core/navbars/DefaultNavBar'
-import MenuNavBar from '../components/core/navbars/MenuNavBar'
-import HorizontalItems from '../fackApi/json/HorizontalMenu'
-import profile from '../assets/images/user/user-1.jpeg'
-import loader from '../assets/images/loader.gif'
-import { core } from '../config/pluginInit'
-import { Users } from '../fackApi/api/chat'
+import Loader from '@/components/core/loader/Loader'
+import DefaultNavBar from '@/components/core/navbars/DefaultNavBar'
+import MenuNavBar from '@/components/core/navbars/MenuNavBar'
+import HorizontalItems from '@/fackApi/json/HorizontalMenu'
+import profile from '@/assets/images/user/user-1.jpeg'
+import loader from '@/assets/images/loader.gif'
+import { core } from '@/config/pluginInit'
+import { Users } from '@/fackApi/api/chat'
 import { mapActions, mapGetters } from 'vuex'
-import Lottie from '../components/core/lottie/Lottie'
+import Lottie from '@/components/core/lottie/Lottie'
 import Customizer from './Components/Customizer'
-import WhiteLogo from '../assets/images/logo-2.png'
-import BreadCrumb from '../components/core/breadcrumbs/BreadCrumb'
+import WhiteLogo from '@/assets/images/logo-2.png'
+import BreadCrumb from '@/components/core/breadcrumbs/BreadCrumb'
 import LayoutFooter from './Components/LayoutFooter'
-import darkLoader from '../assets/images/darkMode/dark-logo.gif'
+import darkLoader from '@/assets/images/darkMode/dark-logo.gif'
 export default {
   name: 'HorizantalLayout',
   components: {
@@ -530,50 +530,50 @@ export default {
       SmallSidebarLogo: WhiteLogo,
       message: [
         {
-          image: require('../assets/images/user/user-01.jpg'),
+          image: require('@/assets/images/user/user-01.jpg'),
           name: 'Nik Emma Watson',
           date: '13 jan'
         },
-        { image: require('../assets/images/user/user-02.jpg'), name: 'Greta Life', date: '14 Jun' },
-        { image: require('../assets/images/user/user-03.jpg'), name: 'Barb Ackue', date: '16 Aug' },
+        { image: require('@/assets/images/user/user-02.jpg'), name: 'Greta Life', date: '14 Jun' },
+        { image: require('@/assets/images/user/user-03.jpg'), name: 'Barb Ackue', date: '16 Aug' },
         {
-          image: require('../assets/images/user/user-04.jpg'),
+          image: require('@/assets/images/user/user-04.jpg'),
           name: 'Anna Sthesia',
           date: '21 Sept'
         },
         {
-          image: require('../assets/images/user/user-05.jpg'),
+          image: require('@/assets/images/user/user-05.jpg'),
           name: 'Bob Frapples',
           date: '29 Sept'
         }
       ],
       notification: [
         {
-          image: require('../assets/images/user/user-01.jpg'),
+          image: require('@/assets/images/user/user-01.jpg'),
           name: 'Nik Emma Watson',
           date: '23 hour ago',
           description: 'Enjoy smart access to videos, games'
         },
         {
-          image: require('../assets/images/user/user-02.jpg'),
+          image: require('@/assets/images/user/user-02.jpg'),
           name: 'Greta Life',
           date: '14 hour ago',
           description: 'Google Chromecast: Enjoy a world of entertainment'
         },
         {
-          image: require('../assets/images/user/user-03.jpg'),
+          image: require('@/assets/images/user/user-03.jpg'),
           name: 'Barb Ackue',
           date: '16 hour ago',
           description: 'Dell Inspiron Laptop: Get speed and performance from'
         },
         {
-          image: require('../assets/images/user/user-04.jpg'),
+          image: require('@/assets/images/user/user-04.jpg'),
           name: 'Anna Sthesia',
           date: '21 hour ago',
           description: 'Deliver your favorite playlist anywhere in your home '
         },
         {
-          image: require('../assets/images/user/user-05.jpg'),
+          image: require('@/assets/images/user/user-05.jpg'),
           name: 'Bob Frapples',
           date: '11 hour ago',
           description: 'MacBook Air features up to 8GB of memory, a fifth-generation'

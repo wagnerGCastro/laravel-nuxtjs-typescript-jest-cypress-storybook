@@ -246,7 +246,8 @@ data(){
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
+/* eslint-disable */
+import { core } from '@/config/pluginInit'
 
 export default {
   name: 'DatepickerDemo',

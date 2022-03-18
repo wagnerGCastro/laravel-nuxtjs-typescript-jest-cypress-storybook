@@ -6,15 +6,15 @@ import './config/firebase'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-// import Raphael from 'raphael/raphael'
+import Raphael from 'raphael/raphael'
 import './plugins'
 import './registerServiceWorker'
-// import AlgoliaComponents from 'vue-instantsearch'
+import AlgoliaComponents from 'vue-instantsearch'
 import i18n from './i18n'
 import './directives'
-// global.Raphael = Raphael
+global.Raphael = Raphael
 
-// Vue.use(AlgoliaComponents)
+Vue.use(AlgoliaComponents)
 
 Vue.config.productionTip = false
 
@@ -26,7 +26,7 @@ const vm = new Vue({
   router,
   store,
   i18n,
-  render: h => h(App)
+  render: (h) => h(App)
 }).$mount('#app')
 
-// window.vm = vm
+window.vm = vm

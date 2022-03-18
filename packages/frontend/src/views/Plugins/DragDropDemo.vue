@@ -694,9 +694,10 @@ export default{
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
+/* eslint-disable */
+import { core } from '@/config/pluginInit'
 import draggable from 'vuedraggable'
-import NestedDraggable from '../../components/core/dragdrop/nested-draggable'
+import NestedDraggable from '@/components/core/dragdrop/nested-draggable'
 
 let id = 1
 let idGlobal = 8

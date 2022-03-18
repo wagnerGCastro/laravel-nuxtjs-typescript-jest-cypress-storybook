@@ -15,8 +15,8 @@
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
-import AmChart from '../../components/core/charts/AmChart'
+import { core } from '@/config/pluginInit'
+import AmChart from '@/components/core/charts/AmChart'
 export default {
   name: 'AmCharts',
   mounted () {

@@ -18,9 +18,10 @@
   </b-card>
 </template>
 <script>
+/* eslint-disable */
 import * as Cookies from 'js-cookie'
-import { AGORA_APP_ID } from '../../../config/agora.config'
-import AgoraVideoCall from '../../../components/Agora/AgoraVideoCall'
+import { AGORA_APP_ID } from '@/config/agora.config'
+import AgoraVideoCall from '@/components/Agora/AgoraVideoCall'
 export default {
   name: 'VideoCall',
   components: {

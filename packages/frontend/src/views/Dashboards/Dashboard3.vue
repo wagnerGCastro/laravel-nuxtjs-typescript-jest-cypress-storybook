@@ -5,7 +5,7 @@
       <b-col lg="3">
         <iq-card>
           <template v-slot:body>
-            <img src="../../assets/images/page-img/41.png" class="img-fluid iq-image-full w-100">
+            <img src="@/assets/images/page-img/41.png" class="img-fluid iq-image-full w-100">
             <TimeLine :items="timelineItems" />
             <iq-card>
               <template v-slot:headerTitle>
@@ -197,7 +197,7 @@
                   <tbody>
                   <tr>
                     <td class="text-center">
-                      <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-01.jpg" alt="profile">
+                      <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-01.jpg" alt="profile">
                     </td>
                     <td>Anna Sthesia</td>
                     <td>Electronic</td>
@@ -207,7 +207,7 @@
                   </tr>
                   <tr>
                     <td class="text-center">
-                      <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-02.jpg" alt="profile">
+                      <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-02.jpg" alt="profile">
                     </td>
                     <td>Brock Lee</td>
                     <td>Laptop</td>
@@ -217,7 +217,7 @@
                   </tr>
                   <tr>
                     <td class="text-center">
-                      <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-03.jpg" alt="profile">
+                      <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-03.jpg" alt="profile">
                     </td>
                     <td>Dan Druff</td>
                     <td>Mobile</td>
@@ -227,7 +227,7 @@
                   </tr>
                   <tr>
                     <td class="text-center">
-                      <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-04.jpg" alt="profile">
+                      <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-04.jpg" alt="profile">
                     </td>
                     <td>Lynn Guini</td>
                     <td>Bluetooth</td>
@@ -237,7 +237,7 @@
                   </tr>
                   <tr>
                     <td class="text-center">
-                      <img class="rounded-circle img-fluid avatar-40" src="../../assets/images/user/user-05.jpg" alt="profile">
+                      <img class="rounded-circle img-fluid avatar-40" src="@/assets/images/user/user-05.jpg" alt="profile">
                     </td>
                     <td>Eric Shun</td>
                     <td>Camera</td>
@@ -319,9 +319,9 @@
   </b-container>
 </template>
 <script>
-import { core } from '../../config/pluginInit'
-import ApexChart from '../../components/core/charts/ApexChart'
-import Counter from '../../components/core/counter/Counter'
+import { core } from '@/config/pluginInit'
+import ApexChart from '@/components/core/charts/ApexChart'
+import Counter from '@/components/core/counter/Counter'
 export default {
   name: 'Dashboard3',
   mounted () {
@@ -522,12 +522,12 @@ export default {
         child: {
           type: 'img',
           items: [
-            require('../../assets/images/user/user-05.jpg'),
-            require('../../assets/images/user/user-06.jpg'),
-            require('../../assets/images/user/user-07.jpg'),
-            require('../../assets/images/user/user-08.jpg'),
-            require('../../assets/images/user/user-09.jpg'),
-            require('../../assets/images/user/user10.jpg')
+            require('@/assets/images/user/user-05.jpg'),
+            require('@/assets/images/user/user-06.jpg'),
+            require('@/assets/images/user/user-07.jpg'),
+            require('@/assets/images/user/user-08.jpg'),
+            require('@/assets/images/user/user-09.jpg'),
+            require('@/assets/images/user/user10.jpg')
           ]
         }
       },

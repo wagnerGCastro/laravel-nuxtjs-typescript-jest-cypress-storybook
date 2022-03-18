@@ -41,6 +41,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { merge } from 'lodash'
 import * as Cookies from 'js-cookie'
 const tileCanvas = {

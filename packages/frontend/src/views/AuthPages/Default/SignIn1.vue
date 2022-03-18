@@ -66,6 +66,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 // import auth0 from 'auth0-js'
 import SignIn1Form from './Forms/SignIn1Form'
 // import constant from '../../../config/constant'
