@@ -1,7 +1,13 @@
 # Referencies
-  # Hosts
+  # Hosts Apache
   - 8040:8040 # backend     # http://backend.local:8040
   - 8041:8041 # frontend    # http://frontend.local:8041
+  - 8042:8042 # ecommerce
+  - 8043:8043 # mobile
+
+  # Hosts Apache
+  - 8040:8050 # backend     # http://backend.local:8050
+  - 8041:8051 # frontend    # http://frontend.local:8051
   - 8042:8042 # ecommerce
   - 8043:8043 # mobile
 
