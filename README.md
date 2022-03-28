@@ -18,9 +18,17 @@
 
   # docker
     $ docker-compose build workspace
+    $ docker-compose -f docker-compose.stage.yml --env-file .env.stage build workspace
+
     $ docker-compose up -d workspace apache2 mysql
+    $ docker-compose -f docker-compose.stage.yml --env-file .env.stage up -d workspace
+
     $ docker-compose exec workspace bash   // root
     $ docker-compose exec --user=laradock workspace bash  // user
+
+    $ docker exec -it 5cd1145d0a37 bash
+    $ docker exec -it 003-workspace bash
+
 
     - container
       $ docker-compose stop workspace

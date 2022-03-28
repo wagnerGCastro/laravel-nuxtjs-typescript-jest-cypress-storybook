@@ -1,3 +1,0 @@
-*.conf
-!default.conf
-!laravel_backend.conf
