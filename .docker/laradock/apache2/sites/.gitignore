@@ -1,4 +1,0 @@
-*.conf
-!default.conf
-!default.apache.conf
-!localhost.conf
