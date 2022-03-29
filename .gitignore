@@ -31,7 +31,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+
 /.env
+/.env.prod
+/.env.dev
+/.env.stage
 /.env.local
 /.env.development.local
 /.env.test.local
@@ -73,7 +77,6 @@ sw.js
 
 .docker/logs/apache2
 !.docker/logs/apache2/.gitkeep
-
 
 .docker/data/redis
 !.docker/data/redis/.gitkeep
