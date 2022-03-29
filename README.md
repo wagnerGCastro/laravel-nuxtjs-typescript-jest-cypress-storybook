@@ -1,13 +1,20 @@
 # Referencies
+
+  # Hosts Docker Workspace
+  - 8040:8040 # backend     # http://localhost:8040
+  - 8041:8041 # frontend    # http://localhost:8041
+  - 8042:8042 # ecommerce
+  - 8043:8043 # mobile
+
   # Hosts Apache
   - 8040:8040 # backend     # http://backend.local:8040
   - 8041:8041 # frontend    # http://frontend.local:8041
   - 8042:8042 # ecommerce
   - 8043:8043 # mobile
 
-  # Hosts Apache
-  - 8040:8050 # backend     # http://backend.local:8050
-  - 8041:8051 # frontend    # http://frontend.local:8051
+  # Hosts NGINX
+  - 8050:8050 # backend     # http://backend.local:8050
+  - 8041:8051 # frontend    # http://frontend.local:8050
   - 8042:8042 # ecommerce
   - 8043:8043 # mobile
 
@@ -24,6 +31,7 @@
     $ docker-compose -f docker-compose.stage.yml --env-file .env.stage up -d workspace
 
     $ docker-compose exec workspace bash   // root
+    $ docker-compose -f docker-compose.stage.yml --env-file .env.stage exec workspace bash   // root
     $ docker-compose exec --user=laradock workspace bash  // user
 
     $ docker exec -it 5cd1145d0a37 bash
