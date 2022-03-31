@@ -1,5 +1,5 @@
 *.conf
 !default.conf
 !default.apache.conf
-!localhost.conf
-!backend.conf
+!backend.apache2.conf
+!frontend.apache2.conf
