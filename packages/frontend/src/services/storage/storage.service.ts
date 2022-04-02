@@ -1,5 +1,5 @@
 import ls from '../../libs/secure-ls'
-import { TOKEN_KEY, REFRESH_TOKEN_KEY, VUE_APP_KEY_STORE } from '../../config/api'
+import { TOKEN_KEY, REFRESH_TOKEN_KEY, VUE_APP_KEY_STORE } from '@/config/api'
 
 export const storageService = {
   getToken () {

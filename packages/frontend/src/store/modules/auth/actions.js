@@ -1,5 +1,4 @@
-
-import AuthService from '../../../services/api/modules/auth.service'
+import AuthService from '@/services/api/modules/auth.service'
 import { AUTH_SET_USER, AUTH_SET_TOKEN } from '../../mutation-types'
 
 export default {
@@ -31,6 +30,9 @@ export default {
 
   async logoutAction ({ commit }) {
     // commit('CHANGE_LOADING', true)
+
+    // commit(AUTH_SET_USER, {})
+    // commit(AUTH_SET_TOKEN, '')
 
     return await AuthService.logout()
       .then(() => {

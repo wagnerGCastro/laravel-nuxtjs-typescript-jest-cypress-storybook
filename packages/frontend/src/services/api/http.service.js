@@ -3,6 +3,8 @@ import { storageService } from '../storage'
 
 import { URL_API } from '../../config/api'
 
+console.log('URL_API', URL_API)
+
 export default class Http {
   constructor (status) {
     const token = storageService.getToken()
