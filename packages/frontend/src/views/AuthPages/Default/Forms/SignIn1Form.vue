@@ -50,9 +50,9 @@
 /* eslint-disable */
 import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
-import { statusErrors } from '../../../../utils/status-errors'
+import { statusErrors } from '@/utils/status-errors'
 import SocialLoginForm from './SocialLoginForm'
-import { core } from '../../../../config/pluginInit'
+import { core } from '@/config/pluginInit'
 
 export default {
   name: 'SignIn1Form',

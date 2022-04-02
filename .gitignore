@@ -53,6 +53,7 @@ __generated__
 workbox-*.js
 sw.js
 
+!.gitkeep
 
 #### DOCKER
 .docker/workspace-frontend
@@ -60,34 +61,18 @@ sw.js
 .docker/workspace-backend
 .docker/laradock
 
-.docker/logs/redis
+.docker/logs/
 !.docker/logs/redis/.gitkeep
-
-.docker/logs/mysql
 !.docker/logs/mysql/.gitkeep
-
-.docker/logs/mongo
 !.docker/logs/mongo/.gitkeep
-
-.docker/logs/sqlite
 !.docker/logs/sqlite/.gitkeep
-
-.docker/logs/nginx
 !.docker/logs/nginx/.gitkeep
-
-.docker/logs/apache2
 !.docker/logs/apache2/.gitkeep
 
-.docker/data/redis
+.docker/data/
 !.docker/data/redis/.gitkeep
-
-.docker/data/mysql
 !.docker/data/mysql/.gitkeep
-
-.docker/data/mongo
 !.docker/data/mongo/.gitkeep
-
-.docker/data/sqlite
 !.docker/data/sqlite/.gitkeep
 
 /docker-compose.stage.yml
