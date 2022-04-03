@@ -1,8 +1,10 @@
 <template>
   <div>
     <Loader />
+    <LoaderStyle1 />
     <section class="sign-in-page">
       <b-container class="bg-white mt-5 p-0">
+        <!-- Loader Principal -->
         <div class="row no-gutters">
           <div class="col-sm-6 align-self-center">
             <div class="sign-in-from">
@@ -37,18 +39,20 @@
   </div>
 </template>
 <script>
-import Loader from '../../components/core/loader/Loader'
-import logo from '../../assets/images/logo-white.png'
-import { core } from '../../config/pluginInit'
-import bgImage from '../../assets/images/login/login-2.jpg'
-import Swiper from '../../components/core/slider/Swiper'
-import SwiperSlide from '../../components/core/slider/SwiperSlide'
+import Loader from '@/components/core/loader/Loader'
+import LoaderStyle1 from '@/components/core/loader/LoaderStyle1'
+import logo from '@/assets/images/logo-white.png'
+import { core } from '@/config/pluginInit'
+import bgImage from '@/assets/images/login/login-2.jpg'
+import Swiper from '@/components/core/slider/Swiper'
+import SwiperSlide from '@/components/core/slider/SwiperSlide'
 export default {
   name: 'AuthLayout',
   components: {
     Loader,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    LoaderStyle1
   },
   mounted () {
     core.index()
