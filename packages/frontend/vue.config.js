@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require('webpack')
+const path = require('path')
 
-console.log('Use env: ', process.env.NODE_ENV)
-console.log('Base url: ', process.env.VUE_APP_BASE_URL)
-console.log('APP run port: ', process.env.VUE_APP_PORT)
+const rootDirDocker = path.join(__dirname, '../..', '.docker')
+const rootDirHusky = path.join(__dirname, '../..', '.husky')
+const rootDirNodeModules = path.join(__dirname, '../..', 'node_modules')
+
+console.log(`🚀 Server started at http://localhost:${process.env.VUE_APP_PORT}`)
+console.log(`🚨️ Environment: ${process.env.NODE_ENV}`)
 
 /**
  * Global CLI Config
@@ -37,7 +41,10 @@ module.exports = {
     host: '0.0.0.0',
     port: process.env.VUE_APP_PORT || 8041, // CHANGE YOUR PORT HERE!
     https: process.env.VUE_APP_HTTPS || false,
-    hotOnly: process.env.VUE_APP_HOT_ONLY || false
+    hotOnly: process.env.VUE_APP_HOT_ONLY || false,
+    watchOptions: {
+      ignored: [/node_modules/, /public/, /.vscode/, /dist/, rootDirDocker, rootDirHusky, rootDirNodeModules]
+    }
   },
 
   configureWebpack: {
