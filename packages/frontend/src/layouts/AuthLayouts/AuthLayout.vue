@@ -1,7 +1,7 @@
 <template>
   <div>
     <Loader />
-    <LoaderStyle1 />
+    <LoaderStyle1 :show="isLoading" />
     <section class="sign-in-page">
       <b-container class="bg-white mt-5 p-0">
         <!-- Loader Principal -->
@@ -39,6 +39,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import Loader from '@/components/core/loader/Loader'
 import LoaderStyle1 from '@/components/core/loader/LoaderStyle1'
 import logo from '@/assets/images/logo-white.png'
@@ -46,6 +47,7 @@ import { core } from '@/config/pluginInit'
 import bgImage from '@/assets/images/login/login-2.jpg'
 import Swiper from '@/components/core/slider/Swiper'
 import SwiperSlide from '@/components/core/slider/SwiperSlide'
+
 export default {
   name: 'AuthLayout',
   components: {
@@ -66,6 +68,11 @@ export default {
       logo: logo,
       bgImageURL: bgImage
     }
+  },
+  computed: {
+    ...mapGetters({
+      isLoading: 'auth/loadingState'
+    })
   }
 }
 </script>

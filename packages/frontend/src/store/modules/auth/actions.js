@@ -1,13 +1,16 @@
 import AuthService from '@/services/api/modules/auth.service'
-import { AUTH_SET_USER, AUTH_SET_TOKEN } from '../../mutation-types'
+import { AUTH_SET_USER, AUTH_SET_TOKEN, AUTH_LOADING, AUTH_LOADED } from '../../mutation-types'
 
 export default {
   async loginAction ({ commit }, params) {
     return new Promise((resolve, reject) => {
+      commit(AUTH_LOADING)
+
       AuthService.auth(params)
         .then(data => {
           commit(AUTH_SET_USER, data.user)
           commit(AUTH_SET_TOKEN, data.token)
+          commit(AUTH_LOADED)
           resolve()
         })
         .catch(error => reject(error))
@@ -29,7 +32,7 @@ export default {
   },
 
   async logoutAction ({ commit }) {
-    // commit('CHANGE_LOADING', true)
+    commit(AUTH_LOADING)
 
     // commit(AUTH_SET_USER, {})
     // commit(AUTH_SET_TOKEN, '')
@@ -42,6 +45,7 @@ export default {
         // commit('CHANGE_LOADING', false)
         commit(AUTH_SET_USER, {})
         commit(AUTH_SET_TOKEN, '')
+        commit(AUTH_LOADED)
       })
   }
 }
