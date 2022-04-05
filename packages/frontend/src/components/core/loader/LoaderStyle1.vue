@@ -5,7 +5,7 @@
       <div class="d-flex justify-content-center">
         <button class="btn btn-primary loader-btn" type="button" disabled>
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Aguarde... Fazendo login!
+          Aguarde... {{ text }}
         </button>
       </div>
     </div>
@@ -13,17 +13,13 @@
 </template>
 <script>
 /* eslint-disable */
-import { mapGetters } from 'vuex'
+
 export default {
   name: 'LoaderStyle1',
   props: {
     show: { type: Boolean, default: false },
-  },
-  computed: {
-    ...mapGetters({
-      darkMode: 'Setting/darkModeState'
-    })
-  },
+    text: { type: String , default: '' }
+  }
 }
 </script>
 
