@@ -1,6 +1,7 @@
 <template>
   <div>
     <Loader />
+    <LoaderStyle1 :show="isLoading" />
     <Customizer
       @onLogo="changeLogo"
       @toggle="sidebarMini"
@@ -273,6 +274,7 @@ import { core } from '@/config/pluginInit'
 import { Users } from '@/fackApi/api/chat'
 import { mapActions, mapGetters } from 'vuex'
 import Loader from '@/components/core/loader/Loader'
+import LoaderStyle1 from '@/components/core/loader/LoaderStyle1'
 import Sidebar from '@/components/core/sidebars/Sidebar'
 import DefaultNavBar from '@/components/core/navbars/DefaultNavBar'
 import SideBarItems from '@/fackApi/json/SideBar'
@@ -297,12 +299,13 @@ export default {
     Sidebar,
     DefaultNavBar,
     SmallSidebar,
-    BreadCrumb
+    BreadCrumb,
+    LoaderStyle1
   },
   mounted () {
     this.layoutSetting(this.$route.name)
 
-    // console.log('userState', this.userState.first_name)
+    console.log('userState', this.userState.first_name)
   },
   computed: {
     ...mapGetters({
@@ -313,7 +316,8 @@ export default {
       darkMode: 'Setting/darkModeState',
       rtlMode: 'Setting/rtlModeState',
       colors: 'Setting/colorState',
-      userState: 'auth/userState'
+      userState: 'auth/userState',
+      isLoading: 'auth/loadingState'
     }),
     toggleSideIcon () {
       let show = true
