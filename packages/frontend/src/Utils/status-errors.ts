@@ -2,10 +2,6 @@ import { AxiosError } from 'axios'
 
 export const statusErrors = (err: AxiosError) => {
   if (err.response) {
-    if (err.response.status === 400) {
-      return console.log(err.response.data.data)
-    }
-
     if (err.response.status === 500) {
       return console.log('Houve um erro inesperado, tente novamente mais tarde.')
     }
