@@ -1,6 +1,6 @@
 import store from '../store'
 import {
-  AUTH_SIGN_PATH,
+  AUTH_SIGN_IN1_PATH,
   DASHBOARD_1_NAME
 } from './constantes'
 
@@ -48,7 +48,7 @@ export default async (to, from, next) => {
 
   /**  If private pages */
   if (to.meta.auth && !hasToken) {
-    return next(AUTH_SIGN_PATH)
+    return next(AUTH_SIGN_IN1_PATH)
   }
 
   if (to.path === '/') {

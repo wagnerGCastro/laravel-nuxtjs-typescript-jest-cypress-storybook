@@ -288,6 +288,7 @@ import WhiteLogo from '@/assets/images/logo-2.png'
 import SmallSidebar from '@/components/core/sidebars/SmallSidebar'
 import BreadCrumb from '@/components/core/breadcrumbs/BreadCrumb'
 import LayoutFooter from './Components/LayoutFooter'
+
 export default {
   name: 'VerticleLayout',
   components: {
@@ -302,11 +303,13 @@ export default {
     BreadCrumb,
     LoaderStyle1
   },
+
   mounted () {
     this.layoutSetting(this.$route.name)
 
     console.log('userState', this.userState.first_name)
   },
+
   computed: {
     ...mapGetters({
       cartCount: 'Ecommerce/cartCountState',
@@ -332,11 +335,13 @@ export default {
       return show
     }
   },
+
   watch: {
-    $route: function (to, from) {
+    $route: function (to) {
       this.layoutSetting(to.name)
     }
   },
+
   // sidebarTicket
   data () {
     return {
@@ -411,6 +416,7 @@ export default {
       ]
     }
   },
+
   methods: {
     layoutSetting (routeName) {
       this.modeChange({ rtl: this.rtlMode, dark: this.darkMode })
@@ -437,26 +443,24 @@ export default {
           break
       }
     },
+
     changeLogo (e) {
       this.logo = e
     },
+
     sidebarMini () {
       core.triggerSet()
       this.$store.dispatch('Setting/miniSidebarAction')
     },
-    async logout () {
-      // localStorage.removeItem('front-app')
-      // localStorage.removeItem('access_token')
-      // localStorage.removeItem('token_api')
 
+    async logout () {
       try {
-        await this.logoutAction()
+        this.logoutAction()
       } catch (error) {
         console.log('Logout Error', error)
       }
-
-      this.$router.push({ name: 'auth1.sign-in1' })
     },
+
     langChange (lang) {
       this.langChangeState(lang)
       this.$i18n.locale = lang.value
@@ -467,6 +471,7 @@ export default {
         this.rtlRemove(lang)
       }
     },
+
     routerAnimationChange (e) {
       this.animated = e
     },

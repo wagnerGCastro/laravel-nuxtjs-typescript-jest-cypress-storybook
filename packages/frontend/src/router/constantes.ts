@@ -15,10 +15,10 @@ export const DASHBOARD_6_PATH = '/home-6'
 export const DASHBOARD_6_NAME = 'dashboard.home-6'
 
 // AUTH
-export const AUTH_SIGN_PATH = '/auth/sign-in1'
-export const AUTH_SIGN_NAME = 'auth.sign-in1'
+export const AUTH_SIGN_IN1_PATH = '/auth/sign-in1'
+export const AUTH_SIGN_IN1_NAME = 'auth1.sign-in1'
 
-export const AUTH_SIGN_UP_PATH = '/auth/sign-up1'
-export const AUTH_SIGN_UP_NAME = 'auth.sign-up1'
+export const AUTH_SIGN_UP1_PATH = '/auth/sign-up1'
+export const AUTH_SIGN_UP1_NAME = 'auth1.sign-up1'
 
 // /auth/sign-up1

@@ -50,6 +50,8 @@
 /* eslint-disable */
 import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
+import { AUTH_LOADED } from '@/store/mutation-types'
+
 import { statusErrors } from '@/utils/status-errors'
 import SocialLoginForm from './SocialLoginForm'
 import { core } from '@/config/pluginInit'
@@ -67,8 +69,7 @@ export default {
   mounted () {
     this.user.email = this.$props.email
     this.user.password = this.$props.password
-
-    // console.log('this.$store.', this.$store)
+    this.$store.dispatch('auth/loadedAction')
   },
   computed: {
     ...mapGetters({
@@ -76,7 +77,9 @@ export default {
     })
   },
   methods: {
-    ...mapActions('auth', ['loginAction']),
+    ...mapActions({
+      loginAction: 'auth/loginAction',
+    }),
 
     onSubmit () {
       if (this.formType === 'passport') {
@@ -100,10 +103,6 @@ export default {
     async jwtLogin () {
       const self = this
 
-      // const selectedUser = this.stateUsers.find(user => {
-      //   return (user.email === this.user.email && user.password === this.user.password)
-      // }) || null
-
       const selectedUser = {
         email: this.user.email,
         password: this.user.password
@@ -112,28 +111,18 @@ export default {
       if (selectedUser) {
         try {
           await self.loginAction(selectedUser)
-          this.$router.push({ name: 'dashboard.home-1' })
         } catch (err) {
-          statusErrors(err)
-        } finally {
-          // off load
 
+          // statusErrors(err)
+
+          if (err.response.status === 400) {
+            // return console.log('Invalid login or password!')
+
+            return core.showSnackbar('error', 'Login ou senha inválidos!')
+          }
+
+          core.showSnackbar('error', err.message)
         }
-
-        // this.$store.dispatch('Setting/authUserAction', {
-        //   auth: true,
-        //   authType: 'jwt',
-        //   user: {
-        //     id: selectedUser.uid,
-        //     name: selectedUser.name,
-        //     mobileNo: null,
-        //     email: selectedUser.email,
-        //     profileImage: null
-        //   }
-        // })
-        // localStorage.setItem('user', JSON.stringify(selectedUser))
-        // localStorage.setItem('access_token', selectedUser.token)
-        // this.$router.push({ name: 'dashboard.home-1' })
       }
     },
     firebaseLogin () {
