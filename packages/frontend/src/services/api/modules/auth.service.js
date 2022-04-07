@@ -34,7 +34,7 @@ export default class AuthService extends BaseService {
 
   static async logout () {
     return new Promise((resolve, reject) => {
-      this.request({ auth: true }).post('/auth/logout')
+      this.request({ auth: true }).post('/auth/logout', {}, { timeout: 1000 * 5 })
         .then(() => {
           resolve()
         })

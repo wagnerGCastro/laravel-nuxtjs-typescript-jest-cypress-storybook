@@ -1,5 +1,7 @@
+import router from '@/router'
 import AuthService from '@/services/api/modules/auth.service'
 import { AUTH_SET_USER, AUTH_SET_TOKEN, AUTH_LOADING, AUTH_LOADED } from '../../mutation-types'
+import { DASHBOARD_1_NAME, AUTH_SIGN_IN1_NAME } from '@/router/constantes'
 
 export default {
   async loginAction ({ commit }, params) {
@@ -10,42 +12,38 @@ export default {
         .then(data => {
           commit(AUTH_SET_USER, data.user)
           commit(AUTH_SET_TOKEN, data.token)
-          commit(AUTH_LOADED)
+          router.push({ name: DASHBOARD_1_NAME })
           resolve()
+          commit(AUTH_LOADED)
         })
-        .catch(error => reject(error))
+        .catch(error => {
+          commit(AUTH_LOADED)
+          reject(error)
+        })
     })
   },
 
   getMeAction ({ commit }) {
-    // commit('CHANGE_LOADING', true)
-
     AuthService.me()
       .then(user => {
-        // console.log('user', user)
         commit(AUTH_SET_USER, user)
       })
       .catch(err => console.log('error getme', err))
-      .finally(() => {
-        // commit('CHANGE_LOADING', false)
-      })
   },
 
   async logoutAction ({ commit }) {
-    commit(AUTH_LOADING)
+    commit(AUTH_SET_TOKEN, '')
+    router.push({ name: AUTH_SIGN_IN1_NAME })
+    commit(AUTH_SET_USER, {})
 
-    // commit(AUTH_SET_USER, {})
-    // commit(AUTH_SET_TOKEN, '')
-
-    return await AuthService.logout()
+    return AuthService.logout()
       .then(() => {
         console.log('logout com sucesso')
       })
-      .finally(() => {
-        // commit('CHANGE_LOADING', false)
-        commit(AUTH_SET_USER, {})
-        commit(AUTH_SET_TOKEN, '')
-        commit(AUTH_LOADED)
-      })
+      .catch(err => console.log('error logout', err))
+  },
+
+  loadedAction ({ commit }) {
+    commit(AUTH_LOADED)
   }
 }
