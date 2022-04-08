@@ -14,7 +14,7 @@ export default {
           commit(AUTH_SET_TOKEN, data.token)
           router.push({ name: DASHBOARD_1_NAME })
           resolve()
-          commit(AUTH_LOADED)
+          setTimeout(() => commit(AUTH_LOADED), 700)
         })
         .catch(error => {
           commit(AUTH_LOADED)
@@ -34,13 +34,8 @@ export default {
   async logoutAction ({ commit }) {
     commit(AUTH_SET_TOKEN, '')
     router.push({ name: AUTH_SIGN_IN1_NAME })
-    commit(AUTH_SET_USER, {})
-
-    return AuthService.logout()
-      .then(() => {
-        console.log('logout com sucesso')
-      })
-      .catch(err => console.log('error logout', err))
+    setTimeout(() => commit(AUTH_SET_USER, {}), 500)
+    AuthService.logout()
   },
 
   loadedAction ({ commit }) {
