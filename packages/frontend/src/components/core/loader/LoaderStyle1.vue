@@ -3,7 +3,7 @@
     <div class="modal-backdrop fade show"></div>
     <div class="modal-backdrop-loader">
       <div class="d-flex justify-content-center">
-        <button class="btn btn-primary loader-btn" type="button" disabled>
+        <button class="btn btn-primary loader-btn  animate__animated animate__fadeInDown" type="button" disabled>
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           Aguarde... {{ text }}
         </button>
@@ -34,7 +34,7 @@ export default {
     height: 100vh;
   }
 
-   #loaderstyle1 .modal-backdrop {
+  #loaderstyle1 .modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@ export default {
     background-color: #000;
   }
 
-   #loaderstyle1 .modal-open .modal {
+  #loaderstyle1 .modal-open .modal {
     overflow-x: hidden;
     overflow-y: auto;
   }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import { VUE_APP_KEY_STORE } from '../config/api'
+import { APP_KEY_STORE } from '../config/constants'
 import ls from '../libs/secure-ls'
 
 // modules
@@ -29,7 +29,7 @@ export default new Vuex.Store({
   },
   strict: debug,
   plugins: [createPersistedState({
-    key: VUE_APP_KEY_STORE,
+    key: APP_KEY_STORE,
     paths: ['auth', 'Setting', 'Ecommerce'],
     storage: {
       getItem: (key) => ls.get(key),
@@ -39,7 +39,7 @@ export default new Vuex.Store({
   })]
 })
 
-if (ls.get(VUE_APP_KEY_STORE)) {
+if (ls.get(APP_KEY_STORE) && debug) {
   const storageApp = JSON.parse(ls.get('front-app'))
-  console.log('storageApp.auth', storageApp.auth)
+  console.log('app_storage', storageApp)
 }

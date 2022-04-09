@@ -50,9 +50,6 @@
 /* eslint-disable */
 import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
-import { AUTH_LOADED } from '@/store/mutation-types'
-
-import { statusErrors } from '@/utils/status-errors'
 import SocialLoginForm from './SocialLoginForm'
 import { core } from '@/config/pluginInit'
 
@@ -113,11 +110,7 @@ export default {
           await self.loginAction(selectedUser)
         } catch (err) {
 
-          // statusErrors(err)
-
           if (err.response.status === 400) {
-            // return console.log('Invalid login or password!')
-
             return core.showSnackbar('error', 'Login ou senha inválidos!')
           }
 

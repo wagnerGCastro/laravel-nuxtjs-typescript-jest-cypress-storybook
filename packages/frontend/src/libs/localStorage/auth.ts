@@ -1,10 +1,9 @@
-import ls from '@/libs/secure-ls'
-import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/config/api'
+import ls from '../secure-ls'
+import { TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/config/constants'
 
-export const storageService = {
+export const auth = {
   getToken () {
     const token = ls.get(TOKEN_KEY)
-    console.log('storageApp?.aut?.token', token)
     return token
   },
 
