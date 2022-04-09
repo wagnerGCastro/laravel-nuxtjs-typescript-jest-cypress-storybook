@@ -20,10 +20,10 @@ export default {
   },
 
   [AUTH_LOADING] (state) {
-    state.loading = true
+    state.loading = { status: true, message: 'Fazendo login!' }
   },
 
   [AUTH_LOADED] (state) {
-    state.loading = false
+    state.loading = { status: false, message: '' }
   }
 }

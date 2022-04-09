@@ -1,12 +1,12 @@
 import BaseService from '../base.service'
-import { storageService } from '../../storage/index'
+import { auth as authStorage } from '../../../libs/localStorage'
 
 export default class AuthService extends BaseService {
   static async auth (params) {
     return new Promise((resolve, reject) => {
       this.request().post('/auth/login', params)
         .then(res => {
-          storageService.saveToken(res.data.token)
+          authStorage.saveToken(res.data.token)
           resolve(res.data)
         })
         .catch(error => reject(error))
@@ -14,7 +14,7 @@ export default class AuthService extends BaseService {
   }
 
   static async me () {
-    const token = storageService.getToken()
+    const token = authStorage.getToken()
 
     if (!token) {
       return Promise(reject => reject('Token Not Found'))
@@ -26,7 +26,7 @@ export default class AuthService extends BaseService {
           resolve(res.data.user)
         })
         .catch(error => {
-          storageService.removeToken()
+          authStorage.removeToken()
           reject(error.response)
         })
     })
@@ -40,7 +40,7 @@ export default class AuthService extends BaseService {
         })
         .catch(error => reject(error.response))
         .finally(() => {
-          storageService.removeToken()
+          authStorage.removeToken()
         })
     })
   }

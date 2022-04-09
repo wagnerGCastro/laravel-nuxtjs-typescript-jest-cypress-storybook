@@ -6,7 +6,10 @@ const state = {
   user: {},
   token: '',
   expires: '',
-  loading: false,
+  loading: {
+    status: false,
+    message: ''
+  },
   isError: false
 }
 

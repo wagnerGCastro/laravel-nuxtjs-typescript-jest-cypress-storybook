@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import beforeEach from './beforeEach'
+import { APP_BASE_URL } from '@/config/constants'
 
 /* Middleares */
 import guest from '../middleware/guest'
+
+const debug = process.env.NODE_ENV !== 'production'
 
 /* Layouts */
 const VerticleLayout = () => import('../layouts/VerticleLayout')
@@ -733,12 +736,14 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.VUE_APP_BASE_URL,
+  base: APP_BASE_URL,
   routes
 })
 
 router.beforeEach(beforeEach)
 
-console.log(router.history.router.options.routes)
+if (debug) {
+  console.log('routes', router.history.router.options.routes)
+}
 
 export default router

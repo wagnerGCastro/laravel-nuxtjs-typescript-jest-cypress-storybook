@@ -1,7 +1,7 @@
 <template>
   <div>
     <Loader />
-    <LoaderStyle1 :show="isLoading" />
+    <LoaderStyle1 :show="isLoading.status" :text="isLoading.message" />
     <section class="sign-in-page">
       <b-container class="bg-white mt-5 p-0">
         <!-- Loader Principal -->

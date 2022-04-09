@@ -1,15 +1,15 @@
 import axios from 'axios'
 import store from '@/store'
-import { storageService } from '../storage'
+import { auth as authStorage } from '../../libs/localStorage/auth'
 
-import { URL_API } from '@/config/api'
+import { URL_API } from '@/config/constants'
 
-console.log('URL_API', URL_API)
+const debug = process.env.NODE_ENV !== 'production'
 
 export default class Http {
   constructor (status) {
     const tokenState = store.getters['auth/tokenState']
-    const tokenLocal = storageService.getToken()
+    const tokenLocal = authStorage.getToken()
     const token = tokenState !== '' ? tokenState : tokenLocal
 
     const headers = status.auth ? {
@@ -25,4 +25,8 @@ export default class Http {
 
     return this.instance
   }
+}
+
+if (debug) {
+  console.log('api_url', URL_API)
 }
