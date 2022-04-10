@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Http\Controllers\Api\{
     AuthController,
     PostController,
+    UserController,
     PermissionController,
 };
 
@@ -80,8 +81,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
          * ---------
          */
         /** User */
-        // Route::get('/users', [UserController::class, 'index'])->name('user.index');
-        // Route::get('/users/{user_id}', 'Api\UserController@show')->name('user.show');
+        Route::get('/users', [UserController::class, 'index'])->name('user.index');
+        Route::get('/users/{user_id}', 'Api\UserController@show')->name('user.show');
         // Route::put('/users/{user_id}', 'Api\UserController@update')->name('user.update');
         // Route::delete('/users/{user_id}', 'Api\UserController@destroy')->name('user.destroy');
     });
