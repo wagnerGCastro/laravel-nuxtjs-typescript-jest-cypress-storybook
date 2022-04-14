@@ -51,8 +51,11 @@
 
   # PHP Artisan
     - php artisan migrate
+    - php artisan migrate:rollback --step=3
+    - php artisan migrate:rollback --path=/database/migrations/the_specific_migration_file.php
     - php artisan make:model Permissions -m
     - php artisan make:controller Api/name_of_controller --api --model=name_of_model
+    - php artisan make:migration create_resources_table
     - php artisan make:migration alter_table_foreign_keys --create=permissions
     - php artisan make:seeder UsersTableSeeder
     - php artisan make:request PostStoreUpdateRequest
