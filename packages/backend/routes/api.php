@@ -2,16 +2,13 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Models\User;
-
 use App\Http\Controllers\Api\{
     AuthController,
     PostController,
     UserController,
     PermissionController,
 };
-
 use App\Http\Controllers\TestRelationships\OneToMany\{
     PermissionController as PermissionTestController
 };
@@ -42,14 +39,14 @@ Route::get('/v1/test', function (Request $request) {
 Route::post('/auth/login', [AuthController::class, 'authenticate'])->name('auth.login');
 Route::post('/auth/register', [AuthController::class, 'register'])->name('auth.register');
 
-Route::group(['middleware' => ['jwt.verify']], function() {
+Route::group(['middleware' => ['jwt.verify']], function () {
 
     /** AUTH */
     Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/auth/me', [AuthController::class, 'me'])->name('auth.me');
 
     /** API VERSION 1 */
-    Route::prefix('v1')->group(function() {
+    Route::prefix('v1')->group(function () {
 
         /**
          * [P]
@@ -86,18 +83,16 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         // Route::put('/users/{user_id}', 'Api\UserController@update')->name('user.update');
         // Route::delete('/users/{user_id}', 'Api\UserController@destroy')->name('user.destroy');
     });
-
 });
 
-Route::group(['middleware' => ['jwt.verify']], function() {
+Route::group(['middleware' => ['jwt.verify']], function () {
 
     /** API Test Eloquent Relationships */
-    Route::prefix('test')->group(function() {
+    Route::prefix('test')->group(function () {
 
         /**  One To Many */
-        Route::prefix('one-to-many')->group(function() {
+        Route::prefix('one-to-many')->group(function () {
             Route::get('permissions', [PermissionTestController::class, 'oneToMany'])->name('test.relation.oneToMany');
         });
-
     });
 });

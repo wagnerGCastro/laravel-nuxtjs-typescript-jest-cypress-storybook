@@ -16,3 +16,7 @@ yarn-error.log
 /.idea
 /.vscode
 /database/migrations/bkp
+api.staging.http
+api.test.http
+api.development.http
+api.production.http

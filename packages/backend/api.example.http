@@ -1,0 +1,32 @@
+
+### AUTH: login
+POST http://backend.local:8050/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@email.com",
+  "password": "password"
+}
+
+### AUTH: me
+GET http://backend.local:8050/api/auth/me
+Authorization: Bearer token_bear_he
+
+### AUTH: logout
+POST http://backend.local:8050/api/auth/logout
+Authorization: Bearer token_bear_he
+
+
+### AUTH: register
+POST http://localhost:3071/api/v1/transactions
+Authorization: Bearer token_bear_he
+Content-Type: application/json
+
+{
+    "first_name": "first_name_user",
+    "last_name": " last_name_user",
+    "login": "login_user",
+    "email": "email_user",
+    "password": "password_user"
+}
+

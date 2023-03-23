@@ -11,7 +11,9 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -101,7 +103,7 @@ class User extends Authenticatable implements JWTSubject
         // User permision_user => [menu_user_view, menu_post_show]
         $hasUserPermission = $this->hasAnyUserPermissions($permission);
 
-        if($hasUserPermission) {
+        if ($hasUserPermission) {
             return true;
         }
 
@@ -116,7 +118,7 @@ class User extends Authenticatable implements JWTSubject
     public function hasAnyRoles($roles)
     {
         // role_user => admin, manage  | (logged in user has the specified function)
-        if( is_array($roles) || is_object($roles) ):
+        if (is_array($roles) || is_object($roles)) :
             return !! $roles->intersect($this->roles)->count();
         endif;
 
@@ -129,9 +131,9 @@ class User extends Authenticatable implements JWTSubject
      */
     public function hasAnyUserPermissions($permission)
     {
-        if(is_object($permission)):
-            if(!empty($permission->name)) {
-               return $this->permissions->contains('name', $permission->name);
+        if (is_object($permission)) :
+            if (!empty($permission->name)) {
+                return $this->permissions->contains('name', $permission->name);
             }
         endif;
 
