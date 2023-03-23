@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\TestRelationships\OneToMany;
 
 use App\Http\Controllers\Controller;
@@ -11,7 +12,6 @@ use DB;
 
 class PermissionController extends Controller
 {
-
     public function oneToMany(Request $request)
     {
         try {
@@ -57,11 +57,9 @@ class PermissionController extends Controller
 
                 ]
             );
-
-
         } catch (\Exception $e) {
             return response()->json([
-                'error'=> 'Error internal server!',
+                'error' => 'Error internal server!',
                 'message' => $e->getMessage(),
             ], 500);
         }
@@ -73,5 +71,4 @@ class PermissionController extends Controller
             'resultRolesPermissions' => $resultRolesPermissions
         ], Response::HTTP_OK);
     }
-
 }

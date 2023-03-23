@@ -79,3 +79,4 @@ sw.js
 /.env.stage
 /.env.dev
 /.env.prod
+/doc.txt

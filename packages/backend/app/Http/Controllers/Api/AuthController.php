@@ -14,10 +14,13 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-    	//Validate data
-        $data = $request->only('name', 'email', 'password');
+        //Validate data
+        $data = $request->only('first_name', 'last_name', 'login', 'email', 'password');
         $validator = Validator::make($data, [
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'login' => 'required|string',
+            'first_name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|max:50'
         ]);
@@ -28,11 +31,21 @@ class AuthController extends Controller
         }
 
         //Request is valid, create new user
-        $user = User::create([
-        	'name' => $request->name,
-        	'email' => $request->email,
-        	'password' => bcrypt($request->password)
-        ]);
+        try {
+            $user = User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'login' => $request->login,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'error' => 'Not created user',
+                'message' => $th->getMessage()
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
 
         //User created, return success response
         return response()->json([
@@ -64,14 +77,14 @@ class AuthController extends Controller
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json([
-                	'error'=> 'Email or password incorrect',
-                	'message' => 'Login credentials are invalid.',
+                    'error' => 'Email or password incorrect',
+                    'message' => 'Login credentials are invalid.',
                 ], 400);
             }
         } catch (JWTException $e) {
-    	    // return $credentials;
+            // return $credentials;
             return response()->json([
-                'error'=> 'Error internal server!',
+                'error' => 'Error internal server!',
                 'message' => 'Could not create token.',
             ], 500);
         }
@@ -79,7 +92,7 @@ class AuthController extends Controller
         // Recover logged in user
         $user = auth()->user();
 
- 		//Token created, return with success response and jwt token
+        //Token created, return with success response and jwt token
         return response()->json([
             'user' => $user,
             'token' => $token,
@@ -91,7 +104,7 @@ class AuthController extends Controller
         $headers = $request->header();
         $validToken = ['token' => ''];
 
-        if(isset($headers['authorization'])) {
+        if (isset($headers['authorization'])) {
             $tokenHeader = $headers['authorization'];
             $tokenHeader = str_replace("Bearer ", "", $tokenHeader);
             $validToken = ['token' => $tokenHeader];
@@ -107,7 +120,7 @@ class AuthController extends Controller
             return response()->json(['error' => $validator->messages()], 400);
         }
 
-		//Request is validated, do logout
+        //Request is validated, do logout
         try {
             JWTAuth::invalidate($request->token);
 
